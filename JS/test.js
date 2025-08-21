@@ -119,3 +119,224 @@
 //   }
 //   console.log(i + " is " + day);
 // }
+
+// var s = "258.90"
+
+// var i = parseInt(s)
+// console.log(i);
+
+// var f = parseFloat(s)
+// console.log(f);
+
+// var t = 7.45678;
+// t = t.toFixed(2);
+// console.log(t);
+// t = parseFloat(t);
+
+// var x = "abc"; //string
+// if (Number.isNaN(x)){
+//     console.log("Is Nan (1)");
+// }
+
+// var x = "1a"; //number
+// if (isNaN(x)){
+//     console.log("Is Nan (2)");
+// }
+
+// var x = "1a"; //number
+// if (Number.isNaN(x)){
+//     console.log("Is Nan (3)");
+// }
+
+// var o = 0.1 + 0.2;
+// console.log(o);
+// if (o == 0.3) {
+//     console.log("YES");
+// } else {
+//     console.log("NO");
+// }
+// o = o.toFixed(1);
+// console.log(o);
+// if (o == 0.3) {
+//     console.log("YES");
+// } else {
+//     console.log("NO");
+// }
+
+// function StricttttParseInt(str) {
+//   var i = 0;
+//   var sign = 1
+//   if (str.charAt(0) === '-') {
+//     sign = -1;
+//     i = 1;
+//   }
+//   if (i >= str.length || str.charAt(i) < '0' || str.charAt(i) > '9') {
+//     return null;
+//   }
+
+//   var num = 0;
+//   while (i < str.length && str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+//     num = num * 10 + (str.charAt(i) - '0');
+//     i++;
+//   }
+
+//   return sign * num;
+// }
+
+
+// console.log(StricttttParseInt("120px"))
+// console.log(StricttttParseInt("a/120px"))
+
+// function isFiniteNumber(value) {
+//   return typeof value === "number" && !isNaN(value) && value !== Infinity && value !== -Infinity;
+// }
+// // Works
+// console.log(isFiniteNumber(1.6));
+// console.log(isFiniteNumber(-1));
+// console.log(isFiniteNumber(10000000));
+// console.log(isFiniteNumber(0));
+// // Msh Works
+// console.log(isFiniteNumber("1.6"));
+// console.log(isFiniteNumber(NaN));
+// console.log(isFiniteNumber(Infinity));
+// console.log(isFiniteNumber({}));
+
+// var s = "   hello world  "
+// s = s.trim("   ")
+// console.log(s);
+
+// var l = "javascript"
+// console.log(l.slice(4,10))
+// console.log(l.substring(4,10));
+
+// var str = "Banana Mania";
+// str = str.toLowerCase();
+// var arr = str.split('');
+// console.log(arr);
+// function cntletters(letter,arr) {
+//     cnt = 0;
+//     for (var i = 0; i < arr.length; i++) {
+//         if (letter == arr[i]){
+//             cnt+=1;
+//         }
+//     }
+//     return cnt
+// }
+// var cnt = cntletters('a',arr)
+// console.log(cnt);
+// // -------------------------------------------------------------
+// var str = "Banana Mania";
+// str = str.toLowerCase();
+// var arr = str.split('');
+// console.log(arr);
+// var c = 0;
+// arr.forEach(element => {
+//     if (element == 'a'){
+//         c+=1;
+//     }
+// });
+// console.log(c);
+//10. Write a function reverseString(s) without using array reverse (iterate backwards).
+function reverseString(s) {
+  var result = "";
+  for (var i = s.length - 1; i >= 0; i--) {
+    result += s.charAt(i);
+  }
+  return result;
+}
+console.log(reverseString("hello")); 
+
+//11. Write a function capitalizeWords(sentence) that turns "hello there friend" into "Hello There Friend".
+function capitalizeWords(sentence) {
+  var words = sentence.split(" ");
+  for (var i = 0; i < words.length; i++) {
+    var w = words[i];
+    words[i] = w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+  }
+  return words.join(" ");
+}
+
+console.log(capitalizeWords("hello there friend")); 
+
+//12. Extract the domain (without protocol and path) from a URL string like "https://example.com/path/to/page" (result: example.com) using indexOf + slice.
+function extractDomain(url) {
+  let start = url.indexOf("//") + 2;         
+  let end = url.indexOf("/", start);        
+  if (end === -1) end = url.length;
+  return url.slice(start, end);
+}
+
+console.log(extractDomain("https://example.com/path/to/page")); 
+
+// 13  Implement a simple substring search function naiveIndexOf(haystack, needle) that returns first index or -1 (do not call built-in indexOf inside the loop).
+function naiveIndexOf(S, needle) {
+  for (var i = 0; i <= S.length - needle.length; i++) {
+    var match = true;
+    for (var j = 0; j < needle.length; j++) {
+      if (S.charAt(i + j) !== needle.charAt(j)) {
+        match = false;
+        break;
+      }
+    }
+    if (match) return i;
+  }
+  return -1;
+}
+
+console.log(naiveIndexOf("hello world", "world")); 
+console.log(naiveIndexOf("hello world", "abc"));   
+
+//14 .Buggy code: var s = 'hello'; if (s.toUpperCase = 'HELLO') { console.log('match'); }  // Fix and explain issue.
+var s = 'hello';
+if (s.toUpperCase() === 'HELLO') { 
+  console.log('match');
+}
+
+//15. Create an array of the numbers 1..5, then push 6 and unshift 0.
+var arr = [1, 2, 3, 4, 5];
+arr.push(6);
+arr.unshift(0);
+console.log(arr); 
+
+// 16. Remove the last element and store it. Remove the first element and store it.
+var arr = [0,1,2,3,4,5,6];
+var last = arr.pop();    
+var first = arr.shift();
+console.log(last, first); 
+console.log(arr);  
+
+// 17. Use slice to copy the first 3 elements of [10,20,30,40,50] into a new array.
+var arr = [10,20,30,40,50];
+var first3 = arr.slice(0, 3);
+console.log(first3); 
+
+// 18. Use splice on [1,2,3,4,5] to remove 3 and 4 and insert 'a','b'. Result should be [1,2,'a','b',5].
+var arr = [1,2,3,4,5];
+arr.splice(2, 2, 'a', 'b'); 
+console.log(arr);
+
+// 19. Demonstrate the difference between slice and splice on the same starting array (show original after each).
+var arr1 = [1,2,3,4,5];
+var sliced = arr1.slice(1,3); 
+console.log(sliced); 
+console.log(arr1);  
+
+var arr2 = [1,2,3,4,5];
+var spliced = arr2.splice(1,2); 
+console.log(spliced); 
+console.log(arr2);  
+
+// 20. Create a sparse array by assigning index 7 on a fresh [] then log length.
+var arr = [];
+arr[7] = 99;
+console.log(arr.length); 
+
+//21. Write a function compact(array) that returns a new array without falsy values (manual loop, no filter).
+function compact(array) {
+  var result = [];
+  for (var i = 0; i < array.length; i++) {
+    if (array[i]) result.push(array[i]); 
+  }
+  return result;
+}
+console.log(compact([0,1,false,2,"",3,null,4,undefined])); 
