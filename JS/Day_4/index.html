@@ -67,7 +67,7 @@
     <div id="my-div">
       <p id="my-p">Hello ISI</p>
     </div>
-    <form action="test.html">
+    <form id="main-form" action="test.html">
       <input type="text" id="my-input" placeholder="Type something..." />
       <input
         type="email"
@@ -108,6 +108,11 @@
                 <button onclick="stopSlider()">Stop</button>
                 <button onclick="nextSlide()">Next</button>
             </div>
+        </div>
+           <!-- Task 25: Wrapper for insertion -->
+        <div id="wrapper">
+            <p id="first">First</p>
+            <p id="second">Second</p>
         </div>
     <script>
       //Assignment
@@ -188,6 +193,158 @@
             var option = selectElement.options[i];
             console.log('Option ' + (i + 1) + ': text="' + option.text + '", value="' + option.value + '"');
         }        
+      
+        //13
+        selectElement.value="EG"
+
+        //14
+      function selectByText(selectId, text) {
+          var select = document.getElementById(selectId);
+          Array.from(select.options).forEach(option => {
+              if (option.text === text) {
+                  option.selected = true;
+              }
+          });
+      }
+      selectByText('my-select', 'United States');
+
+      //15
+      var div2 = document.getElementById('div-2');
+      div2.innerHTML = '<p><b>Bold Text</b></p>';
+
+      //16 
+      div2.classList.add('class-a', 'class-b');
+      div2.classList.remove('class-b');
+
+      //17
+      div2.classList.toggle('hidden'); // Hide
+      div2.classList.toggle('hidden'); // Show
+
+      //18
+      function insertAfter(refNode, newNode) {
+        refNode.parentNode.insertBefore(newNode, refNode.nextSibling);
+      }
+      
+      //19
+      var dynamicBox = document.createElement('div');
+      dynamicBox.innerText = 'Dynamic Box';
+      dynamicBox.style.backgroundColor = 'yellow';
+      dynamicBox.style.padding = '10px';
+      dynamicBox.style.margin = '5px 0';
+      dynamicBox.style.borderRadius = '5px';
+      div2.appendChild(dynamicBox);
+
+      //20
+      var newP = document.createElement('p');
+      newP.innerText = 'INSERTED BEFORE FIRST CHILD';
+      newP.style.color = 'red';
+      newP.style.fontWeight = 'bold';
+      div2.insertBefore(newP, div2.firstChild);
+
+      //21
+      div2.insertAdjacentHTML('afterend', '<span style="color: purple; font-weight: bold;">AFTER END</span>');
+
+      //22
+      var form = document.getElementById('main-form');
+      form.onsubmit = function(e) {
+          e.preventDefault();
+          var textValue = document.getElementById('my-input').value;
+          var emailValue = document.getElementById('my-email').value;
+          var selectValue = document.getElementById('my-select').value;
+          console.log('  Text:', textValue);
+          console.log('  Email:', emailValue);
+          console.log('  Select:', selectValue);
+      };
+
+      //23
+        c.addEventListener('input', function() {
+        console.log(this.value.length);
+      });
+
+      //24
+      function validateEmailSimple(value) {
+                return value.includes('@') && value.includes('.');
+            }
+      
+      console.log('  validateEmailSimple("user@test.com"):', validateEmailSimple("user@test.com")); // true
+      console.log('  validateEmailSimple("valid@email.org"):', validateEmailSimple("valid@email.org")); // true
+      console.log('  validateEmailSimple("invalid-email"):', validateEmailSimple("invalid-email")); // false
+      console.log('  validateEmailSimple("missing@domain"):', validateEmailSimple("missing@domain")); // false
+
+      //25
+      var tempElement = document.createElement('div');
+      tempElement.innerText = 'Temporary Element';
+      tempElement.style.background = 'lightcoral';
+      tempElement.style.padding = '10px';
+      div2.appendChild(tempElement);
+      
+      setTimeout(() => {
+          div2.removeChild(tempElement);
+      }, 2000);
+
+      var wrapperElement = document.createElement('p');
+      wrapperElement.innerText = 'Added to wrapper';
+      wrapperElement.style.background = 'lightgreen';
+      wrapperElement.style.padding = '5px';
+      document.getElementById('wrapper').appendChild(wrapperElement);
+
+      //26
+      var div2Clone = div2.cloneNode(true);
+      div2Clone.id = 'div-2-clone';
+      div2Clone.style.border = '2px dashed #007bff';
+      div2Clone.style.marginTop = '20px';
+      insertAfter(div2, div2Clone);
+
+      //27
+      function highlightInputs(form) {
+        var inputs = form.querySelectorAll('input[type="text"], input[type="email"]');
+        inputs.forEach(input => {
+              input.classList.add('highlight');
+        });
+      }
+      highlightInputs(form);
+
+      //28
+      function buildCard(title, content) {
+        var card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+        return card;
+      }
+      
+      var card1 = buildCard('Card 1', 'This is the content of the first card.');
+      var card2 = buildCard('Card 2', 'This is the content of the second card.');
+      document.body.appendChild(card1);
+      document.body.appendChild(card2);
+
+      //29
+      document.body.addEventListener('click', function(e) {
+        if (e.target.closest('.card')) {
+          var card = e.target.closest('.card');
+          var title = card.querySelector('h3').textContent;
+        }
+      });
+
+      //31
+      var ul = document.createElement('ul');
+      ul.style.listStyleType = 'decimal';
+      ul.style.padding = '20px';
+      ul.style.margin = '20px 0';
+      ul.style.border = '2px solid #ddd';
+      ul.style.borderRadius = '8px';
+      ul.style.background = '#f9f9f9';
+
+      for (var i = 1; i <= 10; i++) {
+          var li = document.createElement('li');
+          li.textContent = `List Item ${i}`;
+          li.className = i % 2 === 1 ? 'odd' : 'even';
+          ul.appendChild(li);
+      }
+      
+      var listTitle = document.createElement('h3');
+      listTitle.textContent = 'Hello';
+      document.body.appendChild(listTitle);
+      document.body.appendChild(ul);
 
     </script>
     <script>

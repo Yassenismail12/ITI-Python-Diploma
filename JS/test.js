@@ -1,252 +1,83 @@
-// var x = 5;
-// var y = new Number(7);
+// 1. Convert string "258.90"
+var s = "258.90";
+var intVal = parseInt(s, 10);     // integer
+var floatVal = parseFloat(s);     // floating number
+console.log(intVal, floatVal);    // 258 258.9
 
-// var s = "String"
-// var st = new String("STRING")
+// 2. Format 7.45678 to 2 decimals, then back to number
+var n = 7.45678;
+var str2 = n.toFixed(2);          // "7.46"
+var num2 = parseFloat(str2);
+console.log(str2, num2);          // "7.46" 7.46
 
-// var b = false
-// var bol = new Boolean(true)
+// 3. NaN check
+var test1 = isNaN("abc");         // true
+var test2 = isNaN("123");         // false (string but coercible)
+console.log(test1, test2);
 
-// console.log(typeof(x))
-// console.log(typeof(y))
-// console.log(typeof(s))
-// console.log(typeof(st))
-// console.log(typeof(b))
-// console.log(typeof(bol))
+// 4. Floating point issue
+console.log(0.1 + 0.2);           // 0.30000000000000004
+console.log((0.1 + 0.2).toFixed(1)); // "0.3"
 
-
-
-// console.log(x);A
-// var x = 5;
-
-// var x = 5;
-// var y = new Number(5)
-// console.log(x==y) //False!
-
-// var x = 123.4567;	
-// console.log(x.toFixed(2));
-// console.log(x.toPrecision(4));
-
-// var a = parseInt("a 11");
-// if (isNaN(a)) {
-//     console.log("YES");
-// }
-
-// console.log(parseInt("123px"));
-// console.log(parseFloat("123.45px"));
-// console.log(Number("123px"));
-
-// var i = "I am " + 23;
-// console.log(i);
-
-// var n = 45;
-// var s = String(n);
-// console.log(s);
-
-// console.log(true + 5);
-// console.log(typeof(true + 5));
-// console.log("10" - 2);
-// console.log(typeof("10" - 2));
-// console.log(12 - "1a");
-// console.log(typeof(12 - "1a"));
-// console.log(5 / 0);
-// console.log(typeof(5 / 0));
-// console.log(5+undefined);
-// console.log(typeof(5+undefined));
-
-// var a = "15.5";
-// var b = +a;
-// console.log(b, typeof b);
-
-// var result = 20 > true < 5 == 1;
-// console.log(result);
-
-// function canbenum (s) {
-//     x = parseInt(s);
-//     if (isNaN(x)){
-//         return false;
-//     }
-//     else {
-//         return true;
-//     }
-// }
-
-// s = "123pox";
-// console.log(canbenum(s));
-
-// var x = 1;
-// while (x<=20) {
-//     console.log(x);
-//     x = x+1;
-// }
-
-// var sum = 0;
-// var number;
-// do {
-//   number = parseInt(prompt("Enter numbers"));
-//   if (number !== 0) {
-//     sum += number;
-//   }
-// } while (number !== 0);
-// console.log("The sum : " + sum);
-
-// for (var i = 1; i <= 7; i++) {
-//   var day;
-//   switch (i) {
-//     case 1:
-//       day = "Sunday";
-//       break;
-//     case 2:
-//       day = "Monday";
-//       break;
-//     case 3:
-//       day = "Tuesday";
-//       break;
-//     case 4:
-//       day = "Wednesday";
-//       break;
-//     case 5:
-//       day = "Thursday";
-//       break;
-//     case 6:
-//       day = "Friday";
-//       break;
-//     case 7:
-//       day = "Saturday";
-//       break;
-//     default:
-//       day = "Invalid day";
-//   }
-//   console.log(i + " is " + day);
-// }
-
-// var s = "258.90"
-
-// var i = parseInt(s)
-// console.log(i);
-
-// var f = parseFloat(s)
-// console.log(f);
-
-// var t = 7.45678;
-// t = t.toFixed(2);
-// console.log(t);
-// t = parseFloat(t);
-
-// var x = "abc"; //string
-// if (Number.isNaN(x)){
-//     console.log("Is Nan (1)");
-// }
-
-// var x = "1a"; //number
-// if (isNaN(x)){
-//     console.log("Is Nan (2)");
-// }
-
-// var x = "1a"; //number
-// if (Number.isNaN(x)){
-//     console.log("Is Nan (3)");
-// }
-
-// var o = 0.1 + 0.2;
-// console.log(o);
-// if (o == 0.3) {
-//     console.log("YES");
-// } else {
-//     console.log("NO");
-// }
-// o = o.toFixed(1);
-// console.log(o);
-// if (o == 0.3) {
-//     console.log("YES");
-// } else {
-//     console.log("NO");
-// }
-
-// function StricttttParseInt(str) {
-//   var i = 0;
-//   var sign = 1
-//   if (str.charAt(0) === '-') {
-//     sign = -1;
-//     i = 1;
-//   }
-//   if (i >= str.length || str.charAt(i) < '0' || str.charAt(i) > '9') {
-//     return null;
-//   }
-
-//   var num = 0;
-//   while (i < str.length && str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-//     num = num * 10 + (str.charAt(i) - '0');
-//     i++;
-//   }
-
-//   return sign * num;
-// }
-
-
-// console.log(StricttttParseInt("120px"))
-// console.log(StricttttParseInt("a/120px"))
-
-// function isFiniteNumber(value) {
-//   return typeof value === "number" && !isNaN(value) && value !== Infinity && value !== -Infinity;
-// }
-// // Works
-// console.log(isFiniteNumber(1.6));
-// console.log(isFiniteNumber(-1));
-// console.log(isFiniteNumber(10000000));
-// console.log(isFiniteNumber(0));
-// // Msh Works
-// console.log(isFiniteNumber("1.6"));
-// console.log(isFiniteNumber(NaN));
-// console.log(isFiniteNumber(Infinity));
-// console.log(isFiniteNumber({}));
-
-// var s = "   hello world  "
-// s = s.trim("   ")
-// console.log(s);
-
-// var l = "javascript"
-// console.log(l.slice(4,10))
-// console.log(l.substring(4,10));
-
-// var str = "Banana Mania";
-// str = str.toLowerCase();
-// var arr = str.split('');
-// console.log(arr);
-// function cntletters(letter,arr) {
-//     cnt = 0;
-//     for (var i = 0; i < arr.length; i++) {
-//         if (letter == arr[i]){
-//             cnt+=1;
-//         }
-//     }
-//     return cnt
-// }
-// var cnt = cntletters('a',arr)
-// console.log(cnt);
-// // -------------------------------------------------------------
-// var str = "Banana Mania";
-// str = str.toLowerCase();
-// var arr = str.split('');
-// console.log(arr);
-// var c = 0;
-// arr.forEach(element => {
-//     if (element == 'a'){
-//         c+=1;
-//     }
-// });
-// console.log(c);
-//10. Write a function reverseString(s) without using array reverse (iterate backwards).
-function reverseString(s) {
-  var result = "";
-  for (var i = s.length - 1; i >= 0; i--) {
-    result += s.charAt(i);
+// 5. safeParseInt
+function safeParseInt(str) {
+  if (!str || (str.charAt(0) !== '-' && (str.charAt(0) < '0' || str.charAt(0) > '9'))) {
+    return null;
   }
-  return result;
+  var i = (str.charAt(0) === '-') ? 1 : 0;
+  if (i && (str.length === 1 || str.charAt(1) < '0' || str.charAt(1) > '9')) return null;
+  var num = 0, sign = (str.charAt(0) === '-') ? -1 : 1;
+  for (; i < str.length; i++) {
+    var c = str.charAt(i);
+    if (c < '0' || c > '9') break;
+    num = num * 10 + (c - '0');
+  }
+  return sign * num;
 }
-console.log(reverseString("hello")); 
+console.log(safeParseInt("120px")); // 120
+console.log(safeParseInt("abc123")); // null
 
-//11. Write a function capitalizeWords(sentence) that turns "hello there friend" into "Hello There Friend".
+// 6. isFiniteNumber
+function isFiniteNumber(value) {
+  return typeof value === "number" && !isNaN(value) && value !== Infinity && value !== -Infinity;
+}
+// Passing
+console.log(isFiniteNumber(42));     // true
+console.log(isFiniteNumber(-3.14));  // true
+console.log(isFiniteNumber(0));      // true
+console.log(isFiniteNumber(1000));   // true
+// Failing
+console.log(isFiniteNumber("42"));   // false
+console.log(isFiniteNumber(NaN));    // false
+console.log(isFiniteNumber(Infinity));// false
+console.log(isFiniteNumber(null));   // false
+
+// 7. Trim
+var s2 = "   hello world  ".trim();
+console.log(s2);
+
+// 8. "script" from "javascript"
+var w = "javascript";
+console.log(w.slice(4));        // "script"
+console.log(w.substring(4));    // "script"
+
+// 9. Count 'a'
+var text = "Banana Mania".toLowerCase();
+var count = 0;
+for (var i = 0; i < text.length; i++) {
+  if (text.charAt(i) === 'a') count++;
+}
+console.log(count); // 5
+
+// 10. reverseString
+function reverseString(s) {
+  var res = "";
+  for (var i = s.length - 1; i >= 0; i--) res += s.charAt(i);
+  return res;
+}
+console.log(reverseString("hello"));
+
+// 11. capitalizeWords
 function capitalizeWords(sentence) {
   var words = sentence.split(" ");
   for (var i = 0; i < words.length; i++) {
@@ -255,88 +86,224 @@ function capitalizeWords(sentence) {
   }
   return words.join(" ");
 }
+console.log(capitalizeWords("hello there friend"));
 
-console.log(capitalizeWords("hello there friend")); 
-
-//12. Extract the domain (without protocol and path) from a URL string like "https://example.com/path/to/page" (result: example.com) using indexOf + slice.
+// 12. Extract domain
 function extractDomain(url) {
-  let start = url.indexOf("//") + 2;         
-  let end = url.indexOf("/", start);        
+  var start = url.indexOf("//") + 2;
+  var end = url.indexOf("/", start);
   if (end === -1) end = url.length;
   return url.slice(start, end);
 }
+console.log(extractDomain("https://example.com/path/to/page"));
 
-console.log(extractDomain("https://example.com/path/to/page")); 
-
-// 13  Implement a simple substring search function naiveIndexOf(haystack, needle) that returns first index or -1 (do not call built-in indexOf inside the loop).
-function naiveIndexOf(S, needle) {
-  for (var i = 0; i <= S.length - needle.length; i++) {
+// 13. naiveIndexOf
+function naiveIndexOf(haystack, needle) {
+  for (var i = 0; i <= haystack.length - needle.length; i++) {
     var match = true;
     for (var j = 0; j < needle.length; j++) {
-      if (S.charAt(i + j) !== needle.charAt(j)) {
-        match = false;
-        break;
-      }
+      if (haystack.charAt(i + j) !== needle.charAt(j)) { match = false; break; }
     }
     if (match) return i;
   }
   return -1;
 }
+console.log(naiveIndexOf("hello world","world"));
 
-console.log(naiveIndexOf("hello world", "world")); 
-console.log(naiveIndexOf("hello world", "abc"));   
+// 14. Buggy fix
+var s3 = 'hello';
+if (s3.toUpperCase() === 'HELLO') { console.log('match'); }
+// Issue: was assignment instead of method call + strict compare
 
-//14 .Buggy code: var s = 'hello'; if (s.toUpperCase = 'HELLO') { console.log('match'); }  // Fix and explain issue.
-var s = 'hello';
-if (s.toUpperCase() === 'HELLO') { 
-  console.log('match');
-}
-
-//15. Create an array of the numbers 1..5, then push 6 and unshift 0.
-var arr = [1, 2, 3, 4, 5];
+// 15. Array 1..5 push/unshift
+var arr = [1,2,3,4,5];
 arr.push(6);
 arr.unshift(0);
-console.log(arr); 
-
-// 16. Remove the last element and store it. Remove the first element and store it.
-var arr = [0,1,2,3,4,5,6];
-var last = arr.pop();    
-var first = arr.shift();
-console.log(last, first); 
-console.log(arr);  
-
-// 17. Use slice to copy the first 3 elements of [10,20,30,40,50] into a new array.
-var arr = [10,20,30,40,50];
-var first3 = arr.slice(0, 3);
-console.log(first3); 
-
-// 18. Use splice on [1,2,3,4,5] to remove 3 and 4 and insert 'a','b'. Result should be [1,2,'a','b',5].
-var arr = [1,2,3,4,5];
-arr.splice(2, 2, 'a', 'b'); 
 console.log(arr);
 
-// 19. Demonstrate the difference between slice and splice on the same starting array (show original after each).
+// 16. Remove last/first
+var last = arr.pop();
+var first = arr.shift();
+console.log(last, first, arr);
+
+// 17. Slice first 3
+var a17 = [10,20,30,40,50];
+var newArr = a17.slice(0,3);
+console.log(newArr);
+
+// 18. Splice remove/insert
+var a18 = [1,2,3,4,5];
+a18.splice(2,2,'a','b');
+console.log(a18);
+
+// 19. Slice vs Splice
 var arr1 = [1,2,3,4,5];
-var sliced = arr1.slice(1,3); 
-console.log(sliced); 
-console.log(arr1);  
-
+var sliced = arr1.slice(1,3);
+console.log(sliced, arr1);
 var arr2 = [1,2,3,4,5];
-var spliced = arr2.splice(1,2); 
-console.log(spliced); 
-console.log(arr2);  
+var spliced = arr2.splice(1,2);
+console.log(spliced, arr2);
 
-// 20. Create a sparse array by assigning index 7 on a fresh [] then log length.
-var arr = [];
-arr[7] = 99;
-console.log(arr.length); 
+// 20. Sparse array
+var a20 = [];
+a20[7] = 99;
+console.log(a20.length); // 8
 
-//21. Write a function compact(array) that returns a new array without falsy values (manual loop, no filter).
+// 21. compact
 function compact(array) {
-  var result = [];
+  var res = [];
   for (var i = 0; i < array.length; i++) {
-    if (array[i]) result.push(array[i]); 
+    if (array[i]) res.push(array[i]);
   }
-  return result;
+  return res;
 }
-console.log(compact([0,1,false,2,"",3,null,4,undefined])); 
+console.log(compact([0,1,false,2,"",3,null,4,undefined]));
+
+// 22. deepClone1D
+function deepClone1D(a) {
+  var copy = [];
+  for (var i = 0; i < a.length; i++) copy[i] = a[i];
+  return copy;
+}
+var orig = [1,2,3];
+console.log(deepClone1D(orig));
+
+// 23. Map squares
+var squares = [1,2,3].map(function(x){ return x*x; });
+console.log(squares);
+
+// 24. Filter >= 12
+var filtered = [5,10,15,20].filter(function(x){ return x>=12; });
+console.log(filtered);
+
+// 25. Reduce product
+var product = [2,4,6].reduce(function(acc,x){ return acc*x; },1);
+console.log(product);
+
+// 26. arraySum
+function arraySum(a) {
+  return a.reduce(function(acc,x){ return acc+x; },0);
+}
+function arraySumLoop(a) {
+  var sum=0;
+  for (var i=0;i<a.length;i++) sum+=a[i];
+  return sum;
+}
+console.log(arraySum([1,2,3]), arraySumLoop([1,2,3]));
+
+// 27. First letters
+var names = ['Ali','Sara','Kareem'];
+var initials = [];
+for (var i=0;i<names.length;i++) initials.push(names[i].charAt(0));
+console.log(initials);
+
+// 28. unique
+function unique(a) {
+  var res=[];
+  for (var i=0;i<a.length;i++) {
+    if (res.indexOf(a[i])===-1) res.push(a[i]);
+  }
+  return res;
+}
+console.log(unique([1,2,2,3,1]));
+// O(n^2). Improvement: use an object 
+
+// 29. flatten1
+function flatten1(a) {
+  var res=[];
+  for (var i=0;i<a.length;i++) {
+    if (Array.isArray(a[i])) {
+      for (var j=0;j<a[i].length;j++) res.push(a[i][j]);
+    } else res.push(a[i]);
+  }
+  return res;
+}
+console.log(flatten1([1,[2,3],[4],5]));
+
+// 31. Object with property add
+var person = {name:"Ali", age:30};
+person.city = "Cairo";
+console.log(person);
+
+// 32. Bracket notation
+var key = "name";
+console.log(person[key]);
+
+// 33. countKeys
+function countKeys(obj) {
+  var count=0;
+  for (var k in obj) {
+    if (obj.hasOwnProperty(k)) count++; //Got from the internet tbh
+  }
+  return count;
+}
+console.log(countKeys(person));
+
+// 39. Falsy values in ES5
+// false
+// 0
+// ""
+// null
+// undefined
+// NaN
+
+// 40. safeToBoolean
+function safeToBoolean(v) {
+  return v === true || v === "true" || v === 1 || v === "1";
+}
+console.log(safeToBoolean("true"), safeToBoolean(0));
+
+// 41. Jan 1 2025
+var d41 = new Date(2025,0,1,0,0,0);
+console.log(d41);
+
+// 42. Current year
+var year = new Date().getFullYear();
+console.log(year);
+
+// 43. daysBetween
+function daysBetween(d1,d2) {
+  var ms = Math.abs(d2-d1);
+  return Math.floor(ms/(1000*60*60*24));
+}
+console.log(daysBetween(new Date(2025,0,1), new Date(2025,0,10)));
+
+// 44. Random int 1..100
+var rand = Math.floor(Math.random()*100)+1;
+console.log(rand);
+
+// 45. Round examples
+var x = 4.567;
+console.log(Math.round(x), Math.floor(x), Math.ceil(x));
+
+// 46. randomIntArray
+function randomIntArray(n,min,max) {
+  var res=[];
+  for (var i=0;i<n;i++) {
+    var r = Math.floor(Math.random()*(max-min+1))+min;
+    res.push(r);
+  }
+  return res;
+}
+console.log(randomIntArray(5,1,10));
+
+// 56. parsePriceList
+function parsePriceList(str) {
+  var items = str.split(";");
+  var obj={};
+  for (var i=0;i<items.length;i++) {
+    var parts=items[i].split(":");
+    obj[parts[0]] = parseFloat(parts[1]);
+  }
+  return obj;
+}
+console.log(parsePriceList("Apple:2.50;Orange:1.75;Banana:3"));
+
+// 57. filterAndSortNumbers
+function filterAndSortNumbers(mixedArray) {
+  var nums = mixedArray.filter(function(x){ return typeof x==="number" && !isNaN(x) && x!==Infinity && x!==-Infinity; });
+  nums.sort(function(a,b){ return a-b; });
+  return nums;
+}
+console.log(filterAndSortNumbers([3,"4",NaN,7,2,Infinity,"hi",0]));
+// -> [0,2,3,7]
