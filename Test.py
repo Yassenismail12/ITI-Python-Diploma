@@ -1,15 +1,12 @@
-t = int(input())
-while t:    
-    n,k = map(int,input().split())
-    a = list(map(int,input().split()))
-    b = list(map(int,input().split()))
-    ans = 0
-    a.sort()
-    b.sort(reverse=True)
-    for i in range(0,n):
-        if i < k:
-            ans+= max(a[i],b[i])
-        else:
-            ans+=a[i]
-    print(ans)    
-    t-=1   
+height = [8,7,2,1]
+left = 0
+right = len(height) - 1
+max_area = 0
+while left < right:
+    current_area = min(height[left], height[right]) * (right - left)
+    max_area = max(max_area, current_area)
+    if height[left] < height[right]:
+        left += 1
+    else:
+        right -= 1
+print(max_area)

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js.js"></script>
+    <title>DOM</title>
+    <style>
+      .target-div {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 10px;
+      }
+      .class-a {
+        background-color: yellow;
+        color: black;
+      }
+      .class-b {
+        background-color: blue;
+        color: white;
+      }
+      .hidden {
+        display: none;
+      }
+            .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide:nth-child(1) { background: linear-gradient(45deg, #ff6b6b, #ee5a24); }
+        .slide:nth-child(2) { background: linear-gradient(45deg, #4834d4, #686de0); }
+        .slide:nth-child(3) { background: linear-gradient(45deg, #00d2d3, #54a0ff); }
+        .slide:nth-child(4) { background: linear-gradient(45deg, #5f27cd, #a55eea); }
+        .slide:nth-child(5) { background: linear-gradient(45deg, #00d084, #26de81); }
+
+        .slider-controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Day4 DOM</h1>
+    <div id="my-div">
+      <p id="my-p">Hello ISI</p>
+    </div>
+    <form action="test.html">
+      <input type="text" id="my-input" placeholder="Type something..." />
+      <input
+        type="email"
+        name="user-email"
+        id="my-email"
+        placeholder="Type your email..."
+      />
+      <select name="user-country" id="my-select">
+        <option value="us">United States</option>
+        <option value="EG">Egypt</option>
+        <option value="uk">United Kingdom</option>
+      </select>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+    <div class="target-div" id="div-2">
+      <h3>create element using js</h3>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque,
+        reiciendis!
+      </p>
+    </div>
+     <!-- 8 -->
+        <div class="exercise-section">
+            <h3>Gallery</h3>
+            <div class="slider-container">
+                <div class="slider" id="image-slider">
+                    <div class="slide">Slide 1 </div>
+                    <div class="slide">Slide 2 </div>
+                    <div class="slide">Slide 3 </div>
+                    <div class="slide">Slide 4 </div>
+                    <div class="slide">Slide 5 </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button onclick="prevSlide()">Previous</button>
+                <button onclick="startSlider()">Start</button>
+                <button onclick="stopSlider()">Stop</button>
+                <button onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    <script>
+      //Assignment
+      //1
+      console.log(document.getElementsByTagName("div")[0].innerHTML);
+      //2
+      var x = document.getElementById("my-p")
+      x.innerText = "Hello DOM"
+      //3
+      var o = document.querySelector(".target-div")
+      console.log(o);
+      //4
+      var s = document.querySelectorAll("div")
+      console.log(s.length);
+      //5
+      var f = document.getElementsByName("user-email")
+      f.value="user@test.com"      
+      //6
+      var c = document.getElementById("my-input")
+      if (!c.hasAttribute("name")){
+        c.setAttribute("name","user-name")
+      }
+      //7 
+      var g = document.getElementById("my-p")
+      g.innerText += " - UPDATED"
+      //8
+    
+      var currentSlide = 0;
+      var sliderInterval;
+      var slider = document.getElementById('image-slider');
+      var totalSlides = 5;
+
+      function showSlide(index) {
+          var translateX = -index * 100;
+          slider.style.transform = `translateX(${translateX}%)`;
+      }
+
+      function nextSlide() {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+          showSlide(currentSlide);
+      }
+
+      function startSlider() {
+          stopSlider(); 
+          sliderInterval = setInterval(nextSlide, 2000);
+      }
+
+      function stopSlider() {
+          if (sliderInterval) {
+              clearInterval(sliderInterval);
+              sliderInterval = null;
+          }
+      }
+    //9
+    c.setAttribute('placeholder', 'Type your full name');
+
+    //10
+    var e = document.getElementById("my-email")
+      if (!e.hasAttribute("required")){
+        console.log("Missing");
+        e.setAttribute("required","True")
+      }
+
+    //11
+      function getSelectedValue(selectId) {
+          var selectElement = document.getElementById(selectId);
+          return selectElement.value;
+      }
+    
+      //12
+        var selectElement = document.getElementById('my-select');
+        for (var i = 0; i < selectElement.options.length; i++) {
+            var option = selectElement.options[i];
+            console.log('Option ' + (i + 1) + ': text="' + option.text + '", value="' + option.value + '"');
+        }        
+
+    </script>
+    <script>
+      // Getting elements > getElementsByTagName, getElementsByName, getElementById, querySelector
+      
+      // Working with select/options > options, innerText, hasAttribute, selected
+
+      //   document.getElementById("my-p").innerHTML += "<span> Hello </span>";
+      //   console.log(document.getElementById("my-div").nodeName === "DIV");
+      //   console.log(document.getElementsByTagName("div")[0]);
+      //   document.getElementsByName("user-name")[0].placeholder = "say your name";
+      //   document.getElementsByName("user-name")[0].value = "kareem";
+      //   console.log(document.forms[0].elements[2].options);
+      //   document.forms[0].elements[2].options[2].selected = true;
+      //   console.log( document.querySelector(".target-div").innerHTML += "<a href='#'>google</a>"  )
+      //   console.log( document.querySelectorAll("div")[0]  )
+
+      // Modifying elements > innerHTML, placeholder, setAttribute, innerText
+      // Class manipulation > classList.add, classList.remove, classList.toggle, classList.replace
+
+      // document.querySelector("[type = text]").setAttribute("name", "user-name")
+      //   //   console.log(  document.querySelector("[type = text]").hasAttribute("name"))
+      //   document.getElementById("div-2").className = " aly";
+      //   document.getElementById("div-2").classList.add("new-div-class");
+      //   document.getElementById("div-2").classList.remove("aly");
+      //   document.getElementById("div-2").classList.toggle("hidden");
+      //   document.getElementById("div-2").classList.toggle("hidden");
+      //   console.log(document.getElementById("div-2"));
+
+      // Form events > onsubmit
+
+      //   document.forms[0].onsubmit = funA;
+      //     function funA(){
+      //         alert("hello")
+      //     }
+
+      // Creating elements > createElement
+      // DOM insertion > appendChild, insertBefore, insertAdjacentElement
+
+      var myDiv = document.createElement("div");
+      myDiv.innerText = "Hello World";
+      var targeDiv = document.getElementById("div-2");
+        targeDiv.appendChild(myDiv);
+
+    //   beforeBegin, afterBegin, beforEend, afterEnd
+    //   targeDiv.insertAdjacentElement("afterend", myDiv);
+        myDiv.style.backgroundColor = "red"
+        myDiv.style.height = "100px"
+        myDiv.style.borderTopLeftRadius = "30px" //border-top-left-radius
+    //   Style manipulation > style.borderTopLeftRadius
+
+
+      // DOM removal > removeChild
+    //   myDiv.remove()
+        targeDiv.removeChild(myDiv)
+
+    </script>
+  </body>
+</html>
