@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Data Structures Cheat Sheet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --dark-red: #8b0000;
+            --white: #ffffff;
+            --black: #000000;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 900px;
+        }
+
+        h1, h2, h3, h4, .text-primary {
+            color: var(--dark-red) !important;
+            font-weight: bold;
+        }
+
+        .card {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .table {
+            color: var(--black);
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+        }
+        
+        .table th, .table td {
+            border-color: #dee2e6;
+        }
+        
+        .table thead th {
+            background-color: #e2e6ea;
+        }
+
+        pre {
+            background-color: #f1f3f5;
+            color: #212529;
+            border: 1px solid #ced4da;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .pretty-code {
+            background-color: #f1f3f5;
+            color: #212529;
+            border: 1px solid #ced4da;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .pretty-code .comment { color: #888; }
+        .pretty-code .keyword { color: #007bff; font-weight: bold; }
+        .pretty-code .string { color: #28a745; }
+        .pretty-code .function { color: #dc3545; }
+        .pretty-code .number { color: #fd7e14; }
+        .pretty-code .operator { color: #17a2b8; }
+        .pretty-code .decorator { color: #6f42c1; }
+
+        .section-divider {
+            border-top: 2px solid var(--dark-red);
+            margin: 3rem 0;
+        }
+
+        h1 { font-size: 2.75rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 2rem; }
+        h4 { font-size: 1.75rem; }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Python Data Structures Cheat Sheet</h1>
+
+    <div class="card p-4 mb-4">
+        <h2 class="mb-3">📋 Lists</h2>
+        <h4 class="text-primary">Basic Operations</h4>
+        <pre class="pretty-code"><code><span class="comment"># Creation</span>
+<span class="keyword">lst</span> <span class="operator">=</span> <span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">,</span> <span class="number">4</span><span class="operator">,</span> <span class="number">5</span><span class="operator">]</span>
+<span class="keyword">lst</span> <span class="operator">=</span> <span class="function">list</span>(<span class="function">range</span>(<span class="number">5</span>))  <span class="comment"># [0, 1, 2, 3, 4]</span>
+
+<span class="comment"># Access</span>
+<span class="keyword">first</span> <span class="operator">=</span> <span class="keyword">lst</span><span class="operator">[</span><span class="number">0</span><span class="operator">]</span>        <span class="comment"># O(1)</span>
+<span class="keyword">last</span> <span class="operator">=</span> <span class="keyword">lst</span><span class="operator">[</span><span class="operator">-</span><span class="number">1</span><span class="operator">]</span>        <span class="comment"># O(1)</span>
+<span class="keyword">slice</span> <span class="operator">=</span> <span class="keyword">lst</span><span class="operator">[</span><span class="number">1</span><span class="operator">:</span><span class="number">4</span><span class="operator">]</span>      <span class="comment"># O(k) where k is slice length</span></code></pre>
+
+        <h4 class="text-primary mt-4">Modification Methods</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Time Complexity</th>
+                        <th scope="col">Example</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>append(x)</code></td><td>O(1)</td><td><code>lst.append(6)</code></td><td>Add to end</td></tr>
+                    <tr><td><code>insert(i, x)</code></td><td>O(n)</td><td><code>lst.insert(0, 'first')</code></td><td>Insert at index</td></tr>
+                    <tr><td><code>remove(x)</code></td><td>O(n)</td><td><code>lst.remove(3)</code></td><td>Remove first occurrence</td></tr>
+                    <tr><td><code>pop()</code></td><td>O(1)</td><td><code>lst.pop()</code></td><td>Remove & return last</td></tr>
+                    <tr><td><code>pop(i)</code></td><td>O(n)</td><td><code>lst.pop(0)</code></td><td>Remove & return at index</td></tr>
+                    <tr><td><code>extend(iterable)</code></td><td>O(k)</td><td><code>lst.extend([7, 8])</code></td><td>Add multiple items</td></tr>
+                    <tr><td><code>clear()</code></td><td>O(n)</td><td><code>lst.clear()</code></td><td>Remove all items</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">Search & Info Methods</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Time Complexity</th>
+                        <th scope="col">Example</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>index(x)</code></td><td>O(n)</td><td><code>lst.index(3)</code></td><td>Find index of value</td></tr>
+                    <tr><td><code>count(x)</code></td><td>O(n)</td><td><code>lst.count(2)</code></td><td>Count occurrences</td></tr>
+                    <tr><td><code>len(lst)</code></td><td>O(1)</td><td><code>len(lst)</code></td><td>Get length</td></tr>
+                    <tr><td><code>in operator</code></td><td>O(n)</td><td><code>3 in lst</code></td><td>Check membership</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">Sorting & Reversing</h4>
+        <pre class="pretty-code"><code><span class="comment"># In-place operations - O(n log n)</span>
+<span class="keyword">lst</span>.<span class="function">sort</span>()              <span class="comment"># Ascending</span>
+<span class="keyword">lst</span>.<span class="function">sort</span>(<span class="keyword">reverse</span><span class="operator">=</span><span class="keyword">True</span>)    <span class="comment"># Descending</span>
+<span class="keyword">lst</span>.<span class="function">sort</span>(<span class="keyword">key</span><span class="operator">=</span><span class="function">lambda</span> x<span class="operator">:</span> x<span class="operator">%</span><span class="number">2</span>)<span class="comment"># Custom key</span>
+<span class="keyword">lst</span>.<span class="function">reverse</span>()           <span class="comment"># O(n) - reverse order</span>
+
+<span class="comment"># Return new list</span>
+<span class="keyword">sorted_lst</span> <span class="operator">=</span> <span class="function">sorted</span>(<span class="keyword">lst</span>)  <span class="comment"># O(n log n)</span>
+<span class="keyword">reversed_lst</span> <span class="operator">=</span> <span class="keyword">lst</span><span class="operator">[</span><span class="operator">::</span><span class="operator">-</span><span class="number">1</span><span class="operator">]</span>  <span class="comment"># O(n) - slice trick</span></code></pre>
+        
+        <h4 class="text-primary mt-4">🎯 List Tricks</h4>
+        <pre class="pretty-code"><code><span class="comment"># List comprehension - Pythonic and fast</span>
+<span class="keyword">squares</span> <span class="operator">=</span> <span class="operator">[</span><span class="keyword">x</span><span class="operator">**</span><span class="number">2</span> <span class="keyword">for</span> <span class="keyword">x</span> <span class="keyword">in</span> <span class="function">range</span>(<span class="number">10</span>)<span class="operator">]</span>
+<span class="keyword">evens</span> <span class="operator">=</span> <span class="operator">[</span><span class="keyword">x</span> <span class="keyword">for</span> <span class="keyword">x</span> <span class="keyword">in</span> <span class="keyword">lst</span> <span class="keyword">if</span> <span class="keyword">x</span> <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span><span class="operator">]</span>
+
+<span class="comment"># Multiple assignment</span>
+<span class="keyword">a</span><span class="operator">,</span> <span class="keyword">b</span><span class="operator">,</span> <span class="keyword">c</span> <span class="operator">=</span> <span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">]</span>
+<span class="operator">*</span><span class="keyword">head</span><span class="operator">,</span> <span class="keyword">tail</span> <span class="operator">=</span> <span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">,</span> <span class="number">4</span><span class="operator">]</span>  <span class="comment"># head=[1,2,3], tail=4</span>
+
+<span class="comment"># Flattening nested lists</span>
+<span class="keyword">nested</span> <span class="operator">=</span> <span class="operator">[[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">]</span><span class="operator">,</span> <span class="operator">[</span><span class="number">3</span><span class="operator">,</span> <span class="number">4</span><span class="operator">]</span><span class="operator">,</span> <span class="operator">[</span><span class="number">5</span><span class="operator">]</span><span class="operator">]</span>
+<span class="keyword">flat</span> <span class="operator">=</span> <span class="operator">[</span><span class="keyword">item</span> <span class="keyword">for</span> <span class="keyword">sublist</span> <span class="keyword">in</span> <span class="keyword">nested</span> <span class="keyword">for</span> <span class="keyword">item</span> <span class="keyword">in</span> <span class="keyword">sublist</span><span class="operator">]</span>
+
+<span class="comment"># Remove duplicates while preserving order</span>
+<span class="keyword">unique</span> <span class="operator">=</span> <span class="function">list</span>(<span class="function">dict</span>.<span class="function">fromkeys</span>(<span class="keyword">lst</span>))
+
+<span class="comment"># Rotate list</span>
+<span class="keyword">def</span> <span class="function">rotate_right</span>(<span class="keyword">lst</span><span class="operator">,</span> <span class="keyword">k</span>)<span class="operator">:</span>
+    <span class="keyword">k</span> <span class="operator">%=</span> <span class="function">len</span>(<span class="keyword">lst</span>)
+    <span class="keyword">return</span> <span class="keyword">lst</span><span class="operator">[</span><span class="operator">-</span><span class="keyword">k</span><span class="operator">:]</span> <span class="operator">+</span> <span class="keyword">lst</span><span class="operator">[</span><span class="operator">:-</span><span class="keyword">k</span><span class="operator">]</span></code></pre>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="card p-4 mb-4">
+        <h2 class="mb-3">📚 Tuples</h2>
+        <h4 class="text-primary">Basic Operations</h4>
+        <pre class="pretty-code"><code><span class="comment"># Creation</span>
+<span class="keyword">tup</span> <span class="operator">=</span> <span class="operator">(</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">,</span> <span class="number">4</span><span class="operator">,</span> <span class="number">5</span><span class="operator">)</span>
+<span class="keyword">tup</span> <span class="operator">=</span> <span class="function">tuple</span>(<span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">]</span>)
+<span class="keyword">single</span> <span class="operator">=</span> <span class="operator">(</span><span class="number">1</span><span class="operator">,</span><span class="operator">)</span>  <span class="comment"># Note the comma for single element</span>
+
+<span class="comment"># Access (same as lists)</span>
+<span class="keyword">first</span> <span class="operator">=</span> <span class="keyword">tup</span><span class="operator">[</span><span class="number">0</span><span class="operator">]</span>      <span class="comment"># O(1)</span>
+<span class="keyword">slice</span> <span class="operator">=</span> <span class="keyword">tup</span><span class="operator">[</span><span class="number">1</span><span class="operator">:</span><span class="number">4</span><span class="operator">]</span>    <span class="comment"># O(k)</span></code></pre>
+
+        <h4 class="text-primary mt-4">Methods</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Time Complexity</th>
+                        <th scope="col">Example</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>count(x)</code></td><td>O(n)</td><td><code>tup.count(2)</code></td><td>Count occurrences</td></tr>
+                    <tr><td><code>index(x)</code></td><td>O(n)</td><td><code>tup.index(3)</code></td><td>Find index</td></tr>
+                    <tr><td><code>len(tup)</code></td><td>O(1)</td><td><code>len(tup)</code></td><td>Get length</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">🎯 Tuple Tricks</h4>
+        <pre class="pretty-code"><code><span class="comment"># Tuple unpacking</span>
+<span class="keyword">x</span><span class="operator">,</span> <span class="keyword">y</span><span class="operator">,</span> <span class="keyword">z</span> <span class="operator">=</span> <span class="operator">(</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">)</span>
+<span class="keyword">coords</span> <span class="operator">=</span> <span class="operator">[(</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">)</span><span class="operator">,</span> <span class="operator">(</span><span class="number">3</span><span class="operator">,</span> <span class="number">4</span><span class="operator">)</span><span class="operator">]</span>
+<span class="keyword">for</span> <span class="keyword">x</span><span class="operator">,</span> <span class="keyword">y</span> <span class="keyword">in</span> <span class="keyword">coords</span><span class="operator">:</span>
+    <span class="function">print</span>(<span class="string">f"({x}, {y})"</span>)
+
+<span class="comment"># Swapping variables</span>
+<span class="keyword">a</span><span class="operator">,</span> <span class="keyword">b</span> <span class="operator">=</span> <span class="keyword">b</span><span class="operator">,</span> <span class="keyword">a</span>
+
+<span class="comment"># Multiple return values</span>
+<span class="keyword">def</span> <span class="function">get_name_age</span>()<span class="operator">:</span>
+    <span class="keyword">return</span> <span class="string">"Alice"</span><span class="operator">,</span> <span class="number">25</span>
+<span class="keyword">name</span><span class="operator">,</span> <span class="keyword">age</span> <span class="operator">=</span> <span class="function">get_name_age</span>()
+
+<span class="comment"># Named tuples for better readability</span>
+<span class="keyword">from</span> <span class="keyword">collections</span> <span class="keyword">import</span> <span class="keyword">namedtuple</span>
+<span class="keyword">Point</span> <span class="operator">=</span> <span class="function">namedtuple</span>(<span class="string">'Point'</span><span class="operator">,</span> <span class="operator">[</span><span class="string">'x'</span><span class="operator">,</span> <span class="string">'y'</span><span class="operator">]</span>)
+<span class="keyword">p</span> <span class="operator">=</span> <span class="keyword">Point</span>(<span class="number">1</span><span class="operator">,</span> <span class="number">2</span>)
+<span class="function">print</span>(<span class="keyword">p</span>.<span class="keyword">x</span><span class="operator">,</span> <span class="keyword">p</span>.<span class="keyword">y</span>)  <span class="comment"># More readable than p[0], p[1]</span></code></pre>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="card p-4 mb-4">
+        <h2 class="mb-3">🗂️ Dictionaries</h2>
+        <h4 class="text-primary">Basic Operations</h4>
+        <pre class="pretty-code"><code><span class="comment"># Creation</span>
+<span class="keyword">d</span> <span class="operator">=</span> <span class="operator">{</span><span class="string">'a'</span><span class="operator">:</span> <span class="number">1</span><span class="operator">,</span> <span class="string">'b'</span><span class="operator">:</span> <span class="number">2</span><span class="operator">,</span> <span class="string">'c'</span><span class="operator">:</span> <span class="number">3</span><span class="operator">}</span>
+<span class="keyword">d</span> <span class="operator">=</span> <span class="function">dict</span>(<span class="keyword">a</span><span class="operator">=</span><span class="number">1</span><span class="operator">,</span> <span class="keyword">b</span><span class="operator">=</span><span class="number">2</span><span class="operator">,</span> <span class="keyword">c</span><span class="operator">=</span><span class="number">3</span>)
+<span class="keyword">d</span> <span class="operator">=</span> <span class="function">dict</span>(<span class="operator">[</span><span class="operator">(</span><span class="string">'a'</span><span class="operator">,</span> <span class="number">1</span><span class="operator">)</span><span class="operator">,</span> <span class="operator">(</span><span class="string">'b'</span><span class="operator">,</span> <span class="number">2</span><span class="operator">)</span><span class="operator">]</span>)
+
+<span class="comment"># Access</span>
+<span class="keyword">value</span> <span class="operator">=</span> <span class="keyword">d</span><span class="operator">[</span><span class="string">'a'</span><span class="operator">]</span>           <span class="comment"># O(1) - raises KeyError if not found</span>
+<span class="keyword">value</span> <span class="operator">=</span> <span class="keyword">d</span>.<span class="function">get</span>(<span class="string">'a'</span><span class="operator">,</span> <span class="number">0</span>)    <span class="comment"># O(1) - returns default if not found</span></code></pre>
+
+        <h4 class="text-primary mt-4">Modification Methods</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Time Complexity</th>
+                        <th scope="col">Example</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>d[key] = value</code></td><td>O(1)</td><td><code>d['new'] = 42</code></td><td>Set/update key</td></tr>
+                    <tr><td><code>update(other)</code></td><td>O(k)</td><td><code>d.update({'d': 4})</code></td><td>Update with another dict</td></tr>
+                    <tr><td><code>pop(key)</code></td><td>O(1)</td><td><code>d.pop('a')</code></td><td>Remove & return value</td></tr>
+                    <tr><td><code>popitem()</code></td><td>O(1)</td><td><code>d.popitem()</code></td><td>Remove & return last item</td></tr>
+                    <tr><td><code>clear()</code></td><td>O(n)</td><td><code>d.clear()</code></td><td>Remove all items</td></tr>
+                    <tr><td><code>del d[key]</code></td><td>O(1)</td><td><code>del d['a']</code></td><td>Delete key</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">Access Methods</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Time Complexity</th>
+                        <th scope="col">Example</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>keys()</code></td><td>O(1)</td><td><code>d.keys()</code></td><td>Get all keys</td></tr>
+                    <tr><td><code>values()</code></td><td>O(1)</td><td><code>d.values()</code></td><td>Get all values</td></tr>
+                    <tr><td><code>items()</code></td><td>O(1)</td><td><code>d.items()</code></td><td>Get key-value pairs</td></tr>
+                    <tr><td><code>get(key, default)</code></td><td>O(1)</td><td><code>d.get('x', 0)</code></td><td>Safe access</td></tr>
+                    <tr><td><code>setdefault(key, default)</code></td><td>O(1)</td><td><code>d.setdefault('x', [])</code></td><td>Get or set default</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">🎯 Dictionary Tricks</h4>
+        <pre class="pretty-code"><code><span class="comment"># Dictionary comprehension</span>
+<span class="keyword">squares</span> <span class="operator">=</span> <span class="operator">{</span><span class="keyword">x</span><span class="operator">:</span> <span class="keyword">x</span><span class="operator">**</span><span class="number">2</span> <span class="keyword">for</span> <span class="keyword">x</span> <span class="keyword">in</span> <span class="function">range</span>(<span class="number">5</span>)<span class="operator">}</span>
+<span class="keyword">filtered</span> <span class="operator">=</span> <span class="operator">{</span><span class="keyword">k</span><span class="operator">:</span> <span class="keyword">v</span> <span class="keyword">for</span> <span class="keyword">k</span><span class="operator">,</span> <span class="keyword">v</span> <span class="keyword">in</span> <span class="keyword">d</span>.<span class="function">items</span>() <span class="keyword">if</span> <span class="keyword">v</span> <span class="operator">></span> <span class="number">2</span><span class="operator">}</span>
+
+<span class="comment"># Merging dictionaries (Python 3.9+)</span>
+<span class="keyword">d1</span> <span class="operator">=</span> <span class="operator">{</span><span class="string">'a'</span><span class="operator">:</span> <span class="number">1</span><span class="operator">,</span> <span class="string">'b'</span><span class="operator">:</span> <span class="number">2</span><span class="operator">}</span>
+<span class="keyword">d2</span> <span class="operator">=</span> <span class="operator">{</span><span class="string">'c'</span><span class="operator">:</span> <span class="number">3</span><span class="operator">,</span> <span class="string">'d'</span><span class="operator">:</span> <span class="number">4</span><span class="operator">}</span>
+<span class="keyword">merged</span> <span class="operator">=</span> <span class="keyword">d1</span> <span class="operator">|</span> <span class="keyword">d2</span>
+
+<span class="comment"># Default dictionaries</span>
+<span class="keyword">from</span> <span class="keyword">collections</span> <span class="keyword">import</span> <span class="keyword">defaultdict</span>
+<span class="keyword">dd</span> <span class="operator">=</span> <span class="function">defaultdict</span>(<span class="function">list</span>)
+<span class="keyword">dd</span><span class="operator">[</span><span class="string">'key'</span><span class="operator">]</span>.<span class="function">append</span>(<span class="number">1</span>)  <span class="comment"># No KeyError, creates empty list</span>
+
+<span class="comment"># Counter for counting</span>
+<span class="keyword">from</span> <span class="keyword">collections</span> <span class="keyword">import</span> <span class="keyword">Counter</span>
+<span class="keyword">text</span> <span class="operator">=</span> <span class="string">"hello world"</span>
+<span class="keyword">char_count</span> <span class="operator">=</span> <span class="keyword">Counter</span>(<span class="keyword">text</span>)  <span class="comment"># {'l': 3, 'o': 2, ...}</span>
+
+<span class="comment"># Reverse dictionary</span>
+<span class="keyword">original</span> <span class="operator">=</span> <span class="operator">{</span><span class="string">'a'</span><span class="operator">:</span> <span class="number">1</span><span class="operator">,</span> <span class="string">'b'</span><span class="operator">:</span> <span class="number">2</span><span class="operator">,</span> <span class="string">'c'</span><span class="operator">:</span> <span class="number">3</span><span class="operator">}</span>
+<span class="keyword">reversed_dict</span> <span class="operator">=</span> <span class="operator">{</span><span class="keyword">v</span><span class="operator">:</span> <span class="keyword">k</span> <span class="keyword">for</span> <span class="keyword">k</span><span class="operator">,</span> <span class="keyword">v</span> <span class="keyword">in</span> <span class="keyword">original</span>.<span class="function">items</span>()<span class="operator">}</span>
+
+<span class="comment"># Group by key</span>
+<span class="keyword">from</span> <span class="keyword">itertools</span> <span class="keyword">import</span> <span class="keyword">groupby</span>
+<span class="keyword">data</span> <span class="operator">=</span> <span class="operator">[(</span><span class="string">'a'</span><span class="operator">,</span> <span class="number">1</span><span class="operator">)</span><span class="operator">,</span> <span class="operator">(</span><span class="string">'a'</span><span class="operator">,</span> <span class="number">2</span><span class="operator">)</span><span class="operator">,</span> <span class="operator">(</span><span class="string">'b'</span><span class="operator">,</span> <span class="number">3</span><span class="operator">)</span><span class="operator">,</span> <span class="operator">(</span><span class="string">'b'</span><span class="operator">,</span> <span class="number">4</span><span class="operator">)</span><span class="operator">]</span>
+<span class="keyword">grouped</span> <span class="operator">=</span> <span class="operator">{</span><span class="keyword">k</span><span class="operator">:</span> <span class="operator">[</span><span class="keyword">item</span><span class="operator">[</span><span class="number">1</span><span class="operator">]</span> <span class="keyword">for</span> <span class="keyword">item</span> <span class="keyword">in</span> <span class="keyword">group</span><span class="operator">]</span>
+           <span class="keyword">for</span> <span class="keyword">k</span><span class="operator">,</span> <span class="keyword">group</span> <span class="keyword">in</span> <span class="function">groupby</span>(<span class="keyword">data</span><span class="operator">,</span> <span class="keyword">key</span><span class="operator">=</span><span class="function">lambda</span> x<span class="operator">:</span> <span class="keyword">x</span><span class="operator">[</span><span class="number">0</span><span class="operator">]</span>)<span class="operator">}</span></code></pre>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="card p-4 mb-4">
+        <h2 class="mb-3">🔧 Sets</h2>
+        <h4 class="text-primary">Basic Operations</h4>
+        <pre class="pretty-code"><code><span class="comment"># Creation</span>
+<span class="keyword">s</span> <span class="operator">=</span> <span class="operator">{</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">,</span> <span class="number">4</span><span class="operator">,</span> <span class="number">5</span><span class="operator">}</span>
+<span class="keyword">s</span> <span class="operator">=</span> <span class="function">set</span>(<span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">,</span> <span class="number">4</span><span class="operator">,</span> <span class="number">5</span><span class="operator">]</span>)
+<span class="keyword">s</span> <span class="operator">=</span> <span class="function">set</span>(<span class="string">'hello'</span>)  <span class="comment"># {'h', 'e', 'l', 'o'}</span>
+
+<span class="comment"># Empty set (not {} which creates dict)</span>
+<span class="keyword">empty</span> <span class="operator">=</span> <span class="function">set</span>()</code></pre>
+
+        <h4 class="text-primary mt-4">Modification Methods</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Time Complexity</th>
+                        <th scope="col">Example</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>add(x)</code></td><td>O(1)</td><td><code>s.add(6)</code></td><td>Add element</td></tr>
+                    <tr><td><code>remove(x)</code></td><td>O(1)</td><td><code>s.remove(3)</code></td><td>Remove (raises KeyError)</td></tr>
+                    <tr><td><code>discard(x)</code></td><td>O(1)</td><td><code>s.discard(3)</code></td><td>Remove (no error)</td></tr>
+                    <tr><td><code>pop()</code></td><td>O(1)</td><td><code>s.pop()</code></td><td>Remove & return arbitrary</td></tr>
+                    <tr><td><code>clear()</code></td><td>O(n)</td><td><code>s.clear()</code></td><td>Remove all</td></tr>
+                    <tr><td><code>update(iterable)</code></td><td>O(k)</td><td><code>s.update([6, 7])</code></td><td>Add multiple</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">Set Operations</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Operator</th>
+                        <th scope="col">Time Complexity</th>
+                        <th scope="col">Example</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>union(other)</code></td><td><code>|</code></td><td>O(m+n)</td><td><code>s1.union(s2)</code></td><td>All elements</td></tr>
+                    <tr><td><code>intersection(other)</code></td><td><code>&</code></td><td>O(min(m,n))</td><td><code>s1 & s2</code></td><td>Common elements</td></tr>
+                    <tr><td><code>difference(other)</code></td><td><code>-</code></td><td>O(m)</td><td><code>s1 - s2</code></td><td>In s1 but not s2</td></tr>
+                    <tr><td><code>symmetric_difference(other)</code></td><td><code>^</code></td><td>O(m+n)</td><td><code>s1 ^ s2</code></td><td>In either but not both</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">🎯 Set Tricks</h4>
+        <pre class="pretty-code"><code><span class="comment"># Remove duplicates from list</span>
+<span class="keyword">lst</span> <span class="operator">=</span> <span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">,</span> <span class="number">3</span><span class="operator">,</span> <span class="number">3</span><span class="operator">]</span>
+<span class="keyword">unique</span> <span class="operator">=</span> <span class="function">list</span>(<span class="function">set</span>(<span class="keyword">lst</span>))
+
+<span class="comment"># Check if lists have common elements</span>
+<span class="keyword">list1</span> <span class="operator">=</span> <span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">]</span>
+<span class="keyword">list2</span> <span class="operator">=</span> <span class="operator">[</span><span class="number">3</span><span class="operator">,</span> <span class="number">4</span><span class="operator">,</span> <span class="number">5</span><span class="operator">]</span>
+<span class="keyword">has_common</span> <span class="operator">=</span> <span class="function">bool</span>(<span class="function">set</span>(<span class="keyword">list1</span>) <span class="operator">&</span> <span class="function">set</span>(<span class="keyword">list2</span>))
+
+<span class="comment"># Set comprehension</span>
+<span class="keyword">evens</span> <span class="operator">=</span> <span class="operator">{</span><span class="keyword">x</span> <span class="keyword">for</span> <span class="keyword">x</span> <span class="keyword">in</span> <span class="function">range</span>(<span class="number">10</span>) <span class="keyword">if</span> <span class="keyword">x</span> <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span><span class="operator">}</span>
+
+<span class="comment"># Frozen sets (immutable)</span>
+<span class="keyword">fs</span> <span class="operator">=</span> <span class="function">frozenset</span>(<span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">]</span>)  <span class="comment"># Can be dict keys</span>
+
+<span class="comment"># Check subset/superset</span>
+<span class="keyword">s1</span> <span class="operator">=</span> <span class="operator">{</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">}</span>
+<span class="keyword">s2</span> <span class="operator">=</span> <span class="operator">{</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">,</span> <span class="number">4</span><span class="operator">}</span>
+<span class="function">print</span>(<span class="keyword">s1</span>.<span class="function">issubset</span>(<span class="keyword">s2</span>))   <span class="comment"># True</span>
+<span class="function">print</span>(<span class="keyword">s2</span>.<span class="function">issuperset</span>(<span class="keyword">s1</span>)) <span class="comment"># True</span></code></pre>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="card p-4 mb-4">
+        <h2 class="mb-3">🏗️ Strings</h2>
+        <h4 class="text-primary">Basic Operations</h4>
+        <pre class="pretty-code"><code><span class="comment"># Creation</span>
+<span class="keyword">s</span> <span class="operator">=</span> <span class="string">"Hello World"</span>
+<span class="keyword">s</span> <span class="operator">=</span> <span class="function">str</span>(<span class="number">123</span>)
+<span class="keyword">s</span> <span class="operator">=</span> <span class="string">f"Value: {42}"</span>  <span class="comment"># f-strings (Python 3.6+)</span></code></pre>
+
+        <h4 class="text-primary mt-4">Modification Methods (Return New String)</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Time Complexity</th>
+                        <th scope="col">Example</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>upper()</code></td><td>O(n)</td><td><code>s.upper()</code></td><td>Uppercase</td></tr>
+                    <tr><td><code>lower()</code></td><td>O(n)</td><td><code>s.lower()</code></td><td>Lowercase</td></tr>
+                    <tr><td><code>strip()</code></td><td>O(n)</td><td><code>s.strip()</code></td><td>Remove whitespace</td></tr>
+                    <tr><td><code>replace(old, new)</code></td><td>O(n)</td><td><code>s.replace('o', '0')</code></td><td>Replace substring</td></tr>
+                    <tr><td><code>split(sep)</code></td><td>O(n)</td><td><code>s.split(' ')</code></td><td>Split into list</td></tr>
+                    <tr><td><code>join(iterable)</code></td><td>O(n)</td><td><code>'-'.join(['a', 'b'])</code></td><td>Join list to string</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">Search Methods</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">Time Complexity</th>
+                        <th scope="col">Example</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>find(sub)</code></td><td>O(n)</td><td><code>s.find('World')</code></td><td>Index of substring (-1 if not found)</td></tr>
+                    <tr><td><code>index(sub)</code></td><td>O(n)</td><td><code>s.index('World')</code></td><td>Index of substring (raises ValueError)</td></tr>
+                    <tr><td><code>count(sub)</code></td><td>O(n)</td><td><code>s.count('l')</code></td><td>Count occurrences</td></tr>
+                    <tr><td><code>startswith(prefix)</code></td><td>O(k)</td><td><code>s.startswith('Hello')</code></td><td>Check prefix</td></tr>
+                    <tr><td><code>endswith(suffix)</code></td><td>O(k)</td><td><code>s.endswith('World')</code></td><td>Check suffix</td></tr>
+                    <tr><td><code>in operator</code></td><td>O(n)</td><td><code>'Hello' in s</code></td><td>Check substring</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">🎯 String Tricks</h4>
+        <pre class="pretty-code"><code><span class="comment"># String formatting</span>
+<span class="keyword">name</span><span class="operator">,</span> <span class="keyword">age</span> <span class="operator">=</span> <span class="string">"Alice"</span><span class="operator">,</span> <span class="number">25</span>
+<span class="keyword">formatted</span> <span class="operator">=</span> <span class="string">f"Name: {name}, Age: {age}"</span>
+<span class="keyword">formatted</span> <span class="operator">=</span> <span class="string">"Name: {}, Age: {}"</span>.<span class="function">format</span>(<span class="keyword">name</span><span class="operator">,</span> <span class="keyword">age</span>)
+<span class="keyword">formatted</span> <span class="operator">=</span> <span class="string">"Name: %s, Age: %d"</span> <span class="operator">%</span> <span class="operator">(</span><span class="keyword">name</span><span class="operator">,</span> <span class="keyword">age</span><span class="operator">)</span>
+
+<span class="comment"># Multiline strings</span>
+<span class="keyword">text</span> <span class="operator">=</span> <span class="string">"""This is a
+multiline string"""</span>
+
+<span class="comment"># String slicing</span>
+<span class="keyword">s</span> <span class="operator">=</span> <span class="string">"Hello World"</span>
+<span class="keyword">reversed_s</span> <span class="operator">=</span> <span class="keyword">s</span><span class="operator">[</span><span class="operator">::</span><span class="operator">-</span><span class="number">1</span><span class="operator">]</span>  <span class="comment"># "dlroW olleH"</span>
+<span class="keyword">every_second</span> <span class="operator">=</span> <span class="keyword">s</span><span class="operator">[</span><span class="operator">::</span><span class="number">2</span><span class="operator">]</span>  <span class="comment"># "HloWrd"</span>
+
+<span class="comment"># Check if string is numeric/alphabetic</span>
+<span class="string">"123"</span>.<span class="function">isdigit</span>()      <span class="comment"># True</span>
+<span class="string">"abc"</span>.<span class="function">isalpha</span>()      <span class="comment"># True</span>
+<span class="string">"abc123"</span>.<span class="function">isalnum</span>()   <span class="comment"># True</span>
+
+<span class="comment"># Padding</span>
+<span class="string">"42"</span>.<span class="function">zfill</span>(<span class="number">5</span>)        <span class="comment"># "00042"</span>
+<span class="string">"test"</span>.<span class="function">center</span>(<span class="number">10</span>)    <span class="comment"># "   test   "</span>
+<span class="string">"test"</span>.<span class="function">ljust</span>(<span class="number">10</span>)     <span class="comment"># "test      "</span>
+<span class="string">"test"</span>.<span class="function">rjust</span>(<span class="number">10</span>)     <span class="comment"># "      test"</span>
+
+<span class="comment"># Case conversion</span>
+<span class="string">"hello world"</span>.<span class="function">title</span>()      <span class="comment"># "Hello World"</span>
+<span class="string">"Hello World"</span>.<span class="function">swapcase</span>()   <span class="comment"># "hELLO wORLD"</span></code></pre>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="card p-4 mb-4">
+        <h2 class="mb-3">⚡ Performance Tips</h2>
+        <h4 class="text-primary">Time Complexity Summary</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Operation</th>
+                        <th scope="col">List</th>
+                        <th scope="col">Tuple</th>
+                        <th scope="col">Dict</th>
+                        <th scope="col">Set</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Access by index/key</td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>N/A</td></tr>
+                    <tr><td>Search</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td></tr>
+                    <tr><td>Insert at end</td><td>O(1)</td><td>N/A</td><td>O(1)</td><td>O(1)</td></tr>
+                    <tr><td>Insert at beginning</td><td>O(n)</td><td>N/A</td><td>O(1)</td><td>O(1)</td></tr>
+                    <tr><td>Delete</td><td>O(n)</td><td>N/A</td><td>O(1)</td><td>O(1)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-primary mt-4">🚀 Optimization Tricks</h4>
+        <pre class="pretty-code"><code><span class="comment"># Use collections.deque for frequent insertions at both ends</span>
+<span class="keyword">from</span> <span class="keyword">collections</span> <span class="keyword">import</span> <span class="keyword">deque</span>
+<span class="keyword">d</span> <span class="operator">=</span> <span class="function">deque</span>(<span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">]</span>)
+<span class="keyword">d</span>.<span class="function">appendleft</span>(<span class="number">0</span>)  <span class="comment"># O(1) vs O(n) for list.insert(0, x)</span>
+
+<span class="comment"># Use sets for membership testing</span>
+<span class="comment"># Instead of: if item in long_list  # O(n)</span>
+<span class="comment"># Use: if item in set(long_list)    # O(1) after conversion</span>
+
+<span class="comment"># Use dict.get() instead of checking keys</span>
+<span class="comment"># Instead of:</span>
+<span class="keyword">if</span> <span class="keyword">key</span> <span class="keyword">in</span> <span class="function">dict</span><span class="operator">:</span>
+    <span class="keyword">value</span> <span class="operator">=</span> <span class="function">dict</span><span class="operator">[</span><span class="keyword">key</span><span class="operator">]</span>
+<span class="keyword">else</span><span class="operator">:</span>
+    <span class="keyword">value</span> <span class="operator">=</span> <span class="keyword">default</span>
+<span class="comment"># Use: value = dict.get(key, default)</span>
+
+<span class="comment"># Use list comprehensions instead of loops (faster)</span>
+<span class="comment"># Instead of:</span>
+<span class="keyword">result</span> <span class="operator">=</span> <span class="operator">[]</span>
+<span class="keyword">for</span> <span class="keyword">x</span> <span class="keyword">in</span> <span class="function">range</span>(<span class="number">10</span>)<span class="operator">:</span>
+    <span class="keyword">if</span> <span class="keyword">x</span> <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span><span class="operator">:</span>
+        <span class="keyword">result</span>.<span class="function">append</span>(<span class="keyword">x</span><span class="operator">**</span><span class="number">2</span>)
+<span class="comment"># Use: result = [x**2 for x in range(10) if x % 2 == 0]</span>
+
+<span class="comment"># Use enumerate() instead of manual indexing</span>
+<span class="comment"># Instead of:</span>
+<span class="keyword">for</span> <span class="keyword">i</span> <span class="keyword">in</span> <span class="function">range</span>(<span class="function">len</span>(<span class="keyword">lst</span>))<span class="operator">:</span>
+    <span class="function">print</span>(<span class="keyword">i</span><span class="operator">,</span> <span class="keyword">lst</span><span class="operator">[</span><span class="keyword">i</span><span class="operator">]</span>)
+<span class="comment"># Use:</span>
+<span class="keyword">for</span> <span class="keyword">i</span><span class="operator">,</span> <span class="keyword">value</span> <span class="keyword">in</span> <span class="function">enumerate</span>(<span class="keyword">lst</span>)<span class="operator">:</span>
+    <span class="function">print</span>(<span class="keyword">i</span><span class="operator">,</span> <span class="keyword">value</span>)</code></pre>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="card p-4 mb-4">
+        <h2 class="mb-3">📦 Advanced Collections</h2>
+        <h4 class="text-primary">collections.deque</h4>
+        <pre class="pretty-code"><code><span class="keyword">from</span> <span class="keyword">collections</span> <span class="keyword">import</span> <span class="keyword">deque</span>
+
+<span class="comment"># Double-ended queue - O(1) operations at both ends</span>
+<span class="keyword">dq</span> <span class="operator">=</span> <span class="function">deque</span>(<span class="operator">[</span><span class="number">1</span><span class="operator">,</span> <span class="number">2</span><span class="operator">,</span> <span class="number">3</span><span class="operator">]</span>)
+<span class="keyword">dq</span>.<span class="function">appendleft</span>(<span class="number">0</span>)     <span class="comment"># Add to left</span>
+<span class="keyword">dq</span>.<span class="function">append</span>(<span class="number">4</span>)         <span class="comment"># Add to right  </span>
+<span class="keyword">dq</span>.<span class="function">popleft</span>()         <span class="comment"># Remove from left</span>
+<span class="keyword">dq</span>.<span class="function">pop</span>()             <span class="comment"># Remove from right</span>
+<span class="keyword">dq</span>.<span class="function">rotate</span>(<span class="number">1</span>)         <span class="comment"># Rotate right</span></code></pre>
+
+        <h4 class="text-primary mt-4">collections.Counter</h4>
+        <pre class="pretty-code"><code><span class="keyword">from</span> <span class="keyword">collections</span> <span class="keyword">import</span> <span class="keyword">Counter</span>
+
+<span class="comment"># Count hashable objects</span>
+<span class="keyword">c</span> <span class="operator">=</span> <span class="function">Counter</span>(<span class="string">'hello world'</span>)  <span class="comment"># Counter({'l': 3, 'o': 2, ...})</span>
+<span class="keyword">c</span>.<span class="function">most_common</span>(<span class="number">3</span>)            <span class="comment"># [('l', 3), ('o', 2), ('h', 1)]</span>
+<span class="keyword">c</span>.<span class="function">update</span>(<span class="string">'hello'</span>)           <span class="comment"># Add more counts</span></code></pre>
+
+        <h4 class="text-primary mt-4">collections.OrderedDict</h4>
+        <pre class="pretty-code"><code><span class="keyword">from</span> <span class="keyword">collections</span> <span class="keyword">import</span> <span class="keyword">OrderedDict</span>
+
+<span class="comment"># Dictionary that remembers insertion order (built-in in Python 3.7+)</span>
+<span class="keyword">od</span> <span class="operator">=</span> <span class="function">OrderedDict</span>(<span class="operator">[</span><span class="operator">(</span><span class="string">'a'</span><span class="operator">,</span> <span class="number">1</span><span class="operator">)</span><span class="operator">,</span> <span class="operator">(</span><span class="string">'b'</span><span class="operator">,</span> <span class="number">2</span><span class="operator">)</span><span class="operator">]</span>)
+<span class="keyword">od</span>.<span class="function">move_to_end</span>(<span class="string">'a'</span>)        <span class="comment"># Move key to end</span></code></pre>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
