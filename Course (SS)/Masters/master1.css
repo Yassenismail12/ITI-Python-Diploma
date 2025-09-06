@@ -1,0 +1,89 @@
+/* ================================
+   CSS2 MASTER EXAMPLES
+   ================================ */
+
+/* ==== 1. BASIC SELECTORS ==== */
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    margin: 20px;
+}
+h1 { color: navy; text-align: center; }
+.info { color: green; font-style: italic; }
+#para1 { border: 1px solid black; padding: 10px; }
+
+/* Attribute selector */
+a[target="_blank"] {
+    color: red;
+    text-decoration: none;
+}
+
+/* ==== 2. BOX MODEL ==== */
+p {
+    margin: 10px;
+    padding: 5px;
+    border: 1px dashed gray;
+}
+
+/* ==== 3. LISTS ==== */
+ol, ul {
+    background: #ddd;
+    padding: 10px;
+}
+
+/* ==== 4. TABLES ==== */
+table {
+    border-collapse: collapse;  /* CSS2 */
+    width: 60%;
+    margin: 15px auto;
+    background: white;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+caption {
+    caption-side: top;
+    font-weight: bold;
+}
+
+/* ==== 5. FORMS ==== */
+input[type="text"], input[type="password"] {
+    border: 1px solid #666;
+    padding: 4px;
+}
+input[type="submit"] {
+    background: navy;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ==== 6. POSITIONING ==== */
+img {
+    float: right;
+    margin: 10px;
+}
+
+/* Clear floats with generated content */
+table::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* ==== 7. GENERATED CONTENT ==== */
+p:before {
+    content: "→ ";
+    color: blue;
+}
+p:after {
+    content: " ✔";
+    color: green;
+}
+
+/* ==== 8. CASCADE & SPECIFICITY ==== */
+p { color: black; }         /* element */
+.info { color: green; }     /* class */
+#para1 { color: blue; }     /* id */

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!-- Tells the browser which rules (Document Type Definition) the page follows  -->
+<!-- Quirks mode VS Standards mode -->
+<html lang="en"> 
+<!-- Root -->
+<head> 
+    <!-- Meta data & instructions for the browser -->
+    <meta charset="UTF-8"> 
+    <!-- Meta data like character encoding, author, description -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <!--  Defines the title for the browser tab (SEO) -->
+    <link href="#"> 
+     <!-- Link external CSS -->
+    <script> 
+    // Javascript
+    </script>
+    <style>
+        /* CSS */
+    </style>
+</head>
+<body>
+    <!-- Visible content -->
+
+    <!-- Headings
+        <h1> is the Greatest
+        <h1> > <h2> > <h3> > <h4> > <h5> > <h6> 
+    -->
+    <h1>This is heading 1</h1>
+    <h2>This is heading 2</h2>
+    <h3>This is heading 3</h3>
+    <h4>This is heading 4</h4>
+    <h5>This is heading 5</h5>
+    <h6>This is heading 6</h6>
+
+    <!-- Paragraph -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, facere?</p>
+
+    <!-- Formatting 
+        <b> → bold (presentational).
+        <i> → italic (presentational).
+        <u> → underline.
+        <strong> → important text (semantic, usually bold).
+        <em> → emphasized text (semantic, usually italic).
+        <sup> / <sub> → superscript / subscript.
+        <abbr> → abbreviation.
+        <cite> → citation.
+        <code> → code text.
+        <q> → inline quotation.
+        <b> vs <strong>: <strong> carries semantic meaning (“important”).
+        <i> vs <em>: <em> means “emphasis” (not just styling).
+    -->
+    <p>
+        <b>This is the b tag</b> & 
+        <i>This is the i tag</i> & 
+        <u>This is the u tag</u> & 
+        <strong>This is the strong tag</strong> & 
+        <em>This is the em tag</em>
+    </p>
+
+    <!-- Anchorpoints (Links) -->
+    <!-- target values:
+        _blank → new tab
+        _self → same frame (default)
+        _parent → parent frame
+        _top → full window
+        custom name → named frame
+    -->
+    <a href="#" target="_blank">Open in new tab</a>
+
+    <!-- Lists
+        unordered lists : ul
+        ordered lists : ol
+        definition lists : dl
+    -->
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <dl>
+        <dt>1</dt>
+            <dd>HTML</dd>
+        <dt>2</dt>
+            <dd>CSS</dd>
+        <dt>3</dt>
+            <dd>JS</dd>
+    </dl>
+
+    <!-- Images 
+        src: Source to the image
+        alt: Alternate text for SEO and accessibility 
+    -->
+    <img src="#" alt="Example"> 
+
+    <!-- Tables
+        Just like the name, TABLE 
+        <tr> table row
+        <td> table data
+        <th> table headers
+        Properties like: border, cellspacing, cellpadding, align, bgcolor, width, height
+    -->
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Alice</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>30</td>
+        </tr>
+    </table>
+
+    <!-- Forms 
+        Forms for submitting and inputs
+        <input>: just detect the action and methods type for the inputs and the name and the value
+        Actions:
+            URL to send data
+        Methods:
+            GET (Data in URL)
+            POST (Data hidden)
+        Types: 
+            text, password, radio, checkbox, image, submit, reset, hidden, file, button
+        Name: 
+            Important for server-side processing 
+    -->
+    <form action="submit.php" method="post">
+        Name: <input type="text" name="username"><br>
+        Password: <input type="password" name="pwd"><br>
+        Gender:
+        <input type="radio" name="gender" value="M"> Male
+        <input type="radio" name="gender" value="F"> Female <br>
+        Hobbies:
+        <input type="checkbox" name="hobby" value="reading"> Reading
+        <input type="checkbox" name="hobby" value="sports"> Sports <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Frames
+        Frameset is used to split the window
+        It allows multiple HTML docs to be in the same HTML window 
+        Problems: bad for usability, bookmarking, and SEO.
+    -->
+
+    <!-- Global Attributes 
+        Apply to most elements: id, class, title, style, lang, dir
+    -->
+    <p id="para1" class="info" title="tooltip" style="color:red;" lang="en" dir="ltr">
+        Example paragraph with global attributes
+    </p>
+
+    <!-- Block vs Inline
+        Block: div, p, h1..h6, table, ul, ol
+        Inline: span, a, img, b, i, strong, em
+    -->
+
+    <!-- Deprecated Presentation Tags (HTML4 Transitional only)
+        <font>, <center>, <big>, <strike> 
+    -->
+    <center>This is centered (old way)</center>
+
+    <!-- Multimedia in HTML4 
+        Used <object>, <embed>, <applet> (all deprecated in HTML5)
+    -->
+    <object data="movie.swf" type="application/x-shockwave-flash" width="400" height="300">
+        Your browser does not support embedded objects.
+    </object>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+/* ================================
+   CSS2 MASTER SUMMARY
+   Covers: selectors, box model,
+   tables, forms, positioning, 
+   generated content.
+   ================================ */
+
+/* ==== 1. SELECTORS ==== */
+/* Element selector */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* background-color from CSS2 */
+    margin: 20px;
+}
+
+/* Element selector */
+h1 {
+    color: navy;
+    text-align: center;
+}
+
+/* Class selector (.classname) */
+.info {
+    color: green;
+    font-style: italic;
+}
+
+/* ID selector (#id) */
+#para1 {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+/* Attribute selector [attr="value"] */
+a[target="_blank"] {
+    color: red;
+    text-decoration: none;
+}
+
+/* ==== 2. BOX MODEL ==== */
+/* Box = content + padding + border + margin */
+p {
+    margin: 10px;               /* outside spacing */
+    padding: 5px;               /* inside spacing */
+    border: 1px dashed gray;    /* border around content+padding */
+}
+
+/* ==== 3. LISTS ==== */
+ol, ul {
+    margin: 15px;
+    padding: 10px;
+    background: #ddd; /* background applied to entire list */
+}
+
+/* ==== 4. TABLES ==== */
+table {
+    border-collapse: collapse;   /* collapse cell borders (CSS2 property) */
+    border-spacing: 5px;         /* space between cells if not collapsed */
+    width: 50%;
+    margin: 10px auto;           /* center table */
+    background: white;
+}
+th, td {
+    border: 1px solid black; /* visible borders */
+    padding: 8px;
+}
+caption {
+    caption-side: top;           /* CSS2: control caption position */
+    font-weight: bold;
+}
+
+/* ==== 5. FORMS ==== */
+input[type="text"], input[type="password"] {
+    border: 1px solid #888;
+    padding: 4px;
+}
+input[type="submit"] {
+    background: navy;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer; /* pointer cursor introduced in CSS2 */
+}
+
+/* ==== 6. POSITIONING ==== */
+/* Floats were core in CSS2 layouts */
+img {
+    float: right;
+    margin: 10px;
+}
+
+/* Clear float using generated block (clearfix) */
+table::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* ==== 7. GENERATED CONTENT ==== */
+/* CSS2 introduced :before and :after pseudo-elements */
+p:before {
+    content: "→ "; /* adds arrow before all <p> */
+    color: blue;
+}
+p:after {
+    content: " ✔"; /* adds checkmark after all <p> */
+    color: green;
+}
+
+/* ==== 8. CASCADE & SPECIFICITY DEMO ==== */
+/* Specificity order: (0,0,0) element < (0,0,1) class < (0,1,0) id < inline style */
+/* Example conflict: */
+p { color: black; }         /* (0,0,1) lowest */
+.info { color: green; }     /* (0,0,1) class wins over element */
+#para1 { color: blue; }     /* (0,1,0) id wins over class */

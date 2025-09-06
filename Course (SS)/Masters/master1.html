@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- 
+============================================
+   HTML4 MASTER STUDY FILE (with CSS2 link)
+   -----------------------------------------
+   Key Notes for Interviews:
+   • HTML4 Document Structure: <!DOCTYPE>, <html>, <head>, <body>
+   • Global Attributes: id, class, style, title, lang, dir
+   • Inline vs Block Elements: <p>, <div> (block) vs <span>, <b> (inline)
+   • Deprecated (for history): <center>, <font>, <u>
+   • Forms: input types (text, password, radio, checkbox, submit)
+   • Table attributes: border, cellpadding, cellspacing (HTML4) 
+     but styling should be done with CSS
+   • Linking: <a href="..." target="...">
+   • Embedding: <object>, <img>, <iframe>
+   • Quirks Mode: triggered by missing/incorrect <!DOCTYPE>
+============================================
+--> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML4 + CSS2 Master Example</title>
+    <link rel="stylesheet" href="master1.css"> 
+</head>
+<body>
+
+    <!-- ================= HEADINGS ================= -->
+    <h1>Heading 1 (h1)</h1>
+    <h2>Heading 2 (h2)</h2>
+    <h3>Heading 3 (h3)</h3>
+    <h4>Heading 4 (h4)</h4>
+    <h5>Heading 5 (h5)</h5>
+    <h6>Heading 6 (h6)</h6>
+
+    <!-- ================= PARAGRAPHS & INLINE TAGS ================= -->
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+
+    <p>
+        <b>Bold (b)</b>, 
+        <i>Italic (i)</i>, 
+        <u>Underline (u)</u>, 
+        <strong>Strong (strong)</strong>, 
+        <em>Emphasis (em)</em>
+    </p>
+
+    <!-- Link with target attribute -->
+    <a href="#" target="_blank">Open link in new tab</a>
+
+    <!-- ================= LISTS ================= -->
+    <ol>
+        <li>Ordered item 1</li>
+        <li>Ordered item 2</li>
+    </ol>
+    <ul>
+        <li>Unordered item 1</li>
+        <li>Unordered item 2</li>
+    </ul>
+    <dl>
+        <dt>Definition term 1</dt>
+        <dd>Definition description 1</dd>
+    </dl>
+
+    <!-- ================= IMAGE ================= -->
+    <img src="#" alt="Placeholder image">
+
+    <!-- ================= TABLE ================= -->
+    <table>
+        <caption>Sample Table</caption>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Alice</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>30</td>
+        </tr>
+    </table>
+
+    <!-- ================= FORM ================= -->
+    <form action="submit.php" method="post">
+        Name: <input type="text" name="username"><br>
+        Password: <input type="password" name="pwd"><br>
+
+        Gender: 
+        <input type="radio" name="gender" value="M"> Male
+        <input type="radio" name="gender" value="F"> Female <br>
+
+        Hobbies:
+        <input type="checkbox" name="hobby" value="reading"> Reading
+        <input type="checkbox" name="hobby" value="sports"> Sports <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- ================= ATTRIBUTES DEMO ================= -->
+    <p id="para1" class="info" title="tooltip" style="color:red;" lang="en" dir="ltr">
+        Example paragraph with global attributes
+    </p>
+
+    <!-- ================= LEGACY TAG (for HTML4 history) ================= -->
+    <center>This text is centered (deprecated method)</center>
+
+    <!-- ================= OBJECT EMBED ================= -->
+    <object data="movie.swf" type="application/x-shockwave-flash" width="300" height="200">
+        Fallback text: Your browser does not support objects.
+    </object>
+
+</body>
+</html>
