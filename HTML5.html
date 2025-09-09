@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew Hloom - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff8c42, #ff6b1a);
+            color: white;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            justify-content: space-evenly;
+        }
+
+        .pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            flex-shrink: 0;
+        }
+
+        .info h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .info .title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        .pic img{
+            border-radius: 50%;
+        }
+        .info .description {
+            font-size: 14px;
+            line-height: 1.4;
+            opacity: 0.8;
+        }
+
+        .main-content {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #f8f9fa;
+            padding: 30px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .section-orange h2 {
+            background: #ff8c42;
+            color: white;
+            padding: 8px 15px;
+            margin: 0 -30px 20px -30px;
+            font-size: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            background: #ff8c42;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .language-item, .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .language-name, .skill-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        progress {
+            width: 100%;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            appearance: none; 
+            
+        }
+        progress::-webkit-progress-bar {
+            background-color: #e9ecef;
+            border-radius: 6px;
+        }
+        progress::-webkit-progress-value {
+            background-color: #ff8c42; 
+            border-radius: 6px;
+        }
+        .skills-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .skill-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .skill-ai { background: #ff8c42; }
+        .skill-id { background: #17a2b8; }
+        .skill-ps { background: #dc3545; }
+        .skill-css { background: #ffc107; }
+
+        .online-info {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .social-facebook { background: #3b5998; }
+        .social-google { background: #dd4b39; }
+
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid #ff8c42;
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #ff8c42;
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: #ff8c42;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .timeline-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .footer-bar {
+            height: 10px;
+            background: linear-gradient(90deg, #ff8c42 0%, #17a2b8 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="pic">
+                <img src="https://avatars.githubusercontent.com/u/82486618?s=400&u=4805ed62934afc39a2863cac1aaf0020811adfc1&v=4" width="100px" alt="#">
+            </div>
+            <div class="info">
+                <h1>Yassen Ismail</h1>
+                <div class="title">Full-stack Developer</div>
+                <div class="description">
+                    Passionate about Full-stack technologies and experienced in Django 
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <div class="section">
+                    <h2>Contact</h2>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>123 Park Avenue, Michigan, MI</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>123 456 7899</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>info@hloom.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div>www.hloom.com</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Languages</h2>
+                    <div class="language-item">
+                        <div class="language-name">English</div>
+                        <progress value="95" max="100"></progress>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">German</div>
+                        <progress value="70" max="100"></progress>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">Spanish</div>
+                        <progress value="85" max="100"></progress>
+                    </div>
+            </div>
+
+
+                <div class="section">
+                    <h2>Skills</h2>
+                    <div class="skills-container">
+                        <div class="skill-circle skill-ai">AI</div>
+                        <div class="skill-circle skill-id">ID</div>
+                        <div class="skill-circle skill-ps">PS</div>
+                        <div class="skill-circle skill-css">CSS</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Online Info</h2>
+                    <div class="online-info">
+                        <a href="#" class="social-icon social-facebook">f</a>
+                        <a href="#" class="social-icon social-google">G+</a>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="content">
+                <div class="section section-orange">
+                    <h2>Achievements</h2>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010</div>
+                        <div class="timeline-title">Lorem Project</div>
+                        <div class="timeline-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Maecenas porttitor congue massa. Fusce posuere, magna
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012</div>
+                        <div class="timeline-title">Vivamus Project</div>
+                        <div class="timeline-description">
+                            Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. 
+                            Pellentesque habitant morbi
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015</div>
+                        <div class="timeline-title">Nunc Project</div>
+                        <div class="timeline-description">
+                            Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. 
+                            Pellentesque habitant morbi
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section section-orange">
+                    <h2>Education</h2>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1997 - 2001</div>
+                        <div class="timeline-title">ABC School</div>
+                        <div class="timeline-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Maecenas porttitor congue massa. Fusce posuere, magna
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2001 - 2004</div>
+                        <div class="timeline-title">Ohio University</div>
+                        <div class="timeline-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Maecenas porttitor congue massa. Fusce posuere, magna
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2004 - 2006</div>
+                        <div class="timeline-title">ABC Studies</div>
+                        <div class="timeline-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Maecenas porttitor congue massa. Fusce posuere, magna
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section section-orange">
+                    <h2>Work Experience</h2>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010 - 2013</div>
+                        <div class="timeline-title">ABC Company</div>
+                        <div class="timeline-description">
+                            Lorem ipsum dolor sit amet
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2013 - 2015</div>
+                        <div class="timeline-title">Zoom Company</div>
+                        <div class="timeline-description">
+                            Lorem ipsum dolor sit amet
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div class="footer-bar"></div>
+    </div>
+</body>
+</html>
