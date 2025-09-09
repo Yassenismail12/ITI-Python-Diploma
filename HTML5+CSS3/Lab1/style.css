@@ -1,0 +1,99 @@
+/* Reset بسيط */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+body {
+  background: #f4f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* الحاوية الرئيسية */
+.container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* الكروت */
+.card {
+  width: 300px;
+  min-height: 280px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* خلفيات مختلفة */
+.radial-card {
+  background: radial-gradient(circle at top left, #57c4c0, #075e71);
+  color: #fff;
+}
+
+.linear-card {
+  background: linear-gradient(135deg, #4a90e2, #075e71);
+  color: #fff;
+}
+
+.image-card {
+  background: url('world-map.jpg') no-repeat center/cover;
+  color: #222;
+}
+
+/* الهوفر للكرت */
+.card:hover {
+  transform: scale(0.97);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+/* الأزرار */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+/* العنصر الأخضر */
+.card-footer {
+  margin-top: 15px;
+  border: 2px solid green;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4fff4;
+  transition: transform 0.3s ease;
+}
+
+/* الهوفر على الكرت الثاني -> skew */
+.linear-card:hover .skew-box {
+  transform: skew(6deg, 3deg);
+}
+
+/* الهوفر على الكرت الثالث -> صورة تتحرك */
+.image-card:hover {
+  transform: translateY(-10px) rotate(1deg);
+}

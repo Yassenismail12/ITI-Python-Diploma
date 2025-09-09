@@ -1,0 +1,126 @@
+/* Reset أساسي */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+  --main_color: green;
+  --sec_color: blue;
+  --main_fontsize: 50px;
+}
+
+/* div تجريبي */
+.div1 {
+  border: solid;
+  height: 500px;
+}
+
+/* Example on h1 */
+h1 {
+  border: solid;
+  width: 400px;
+  padding: 30px;
+  margin: 30px;
+}
+
+/* Example on links */
+a {
+  border: solid red;
+  width: 500px;
+  padding: 30px;
+  margin: 30px 50px;
+}
+
+/* Box model examples */
+.div1 {
+  width: 400px;
+  height: 200px;
+  background-color: aqua;
+  margin-bottom: 40px;
+  border: solid green 10px;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.div2 {
+  width: 400px;
+  height: 200px;
+  background-color: blue;
+  margin-top: 20px;
+  margin-left: 20px;
+  display: inline-block;
+  border: solid red 20px;
+  box-sizing: border-box;
+}
+
+/* Using variables */
+h1 {
+  color: var(--main_color);
+  font-size: var(--main_fontsize);
+}
+
+p {
+  color: var(--sec_color);
+}
+
+/* Box shadow example */
+.box_shadow {
+  margin: 50px;
+  width: 400px;
+  border: solid 10px green;
+  box-shadow: inset 5px -10px 10px blue, inset -5px 10px 10px green;
+}
+
+/* Text shadow example */
+h1 {
+  text-shadow: 10px 10px 5px goldenrod;
+}
+
+/* Background image & gradients */
+.bg_img {
+  border: solid;
+  width: 500px;
+  height: 300px;
+
+  /* Image */
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYqoKTu_o3Zns2yExbst2Co84Gpc2Q1RJbA&s");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  /* Linear gradient */
+  background-image: linear-gradient(to left bottom, blue, green, gold);
+  background-image: linear-gradient(270deg, blue 40%, green 10%, gold 50%);
+
+  /* Radial gradient */
+  background-image: radial-gradient(circle, blue 40%, green 50%, gold 10%);
+}
+
+/* Transition + Transform examples */
+.transtion {
+  border: solid;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.translate {
+  border: solid;
+  width: 150px;
+  height: 150px;
+  background-color: aqua;
+  transition: all 2s linear;
+}
+
+.transtion .translate:hover {
+  /* جرّب التعليقات دول واحدة واحدة */
+  /* transform: translate(30px, -50px); */
+  /* transform: rotate(30deg); */
+  /* transform: scale(.8); */
+  transform: skew(45deg, 40deg) rotate(45deg);
+}
