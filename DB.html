@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lab</title>
+  <script src="https://kit.fontawesome.com/85940c58c2.js" crossorigin="anonymous"></script>
+  <style>
+    body { 
+        font-family: Arial, sans-serif; 
+        margin: 20px;
+    }
+    .frm input { 
+        margin: 5px; 
+        padding: 5px;
+    }
+    .frm button { 
+        padding: 5px 10px; 
+        cursor: pointer; 
+    }
+    table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-top: 20px; 
+    }
+    th {
+        font-weight: 500;
+    }
+    tr:nth-child(even){
+        background-color: rgba(169, 169, 169, 0.404);
+    }
+    th, td { 
+        padding: 8px; 
+        text-align: left; 
+    }
+    .sortbtn{
+        cursor: pointer;
+    }
+    .sortbtn:hover{
+        opacity: 70%;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="frm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="number" id="age" placeholder="Age" required>
+    <input type="text" id="position" placeholder="Position" required>
+    <input type="text" id="office" placeholder="Office" required>
+    <input type="date" id="startdate" required>
+    <button type="button" id="addBtn" onclick="addEmployee()">+ Add</button>
+  </div>
+
+  <table border="1" id="userTable">
+    <thead>
+      <tr>
+        <th>Name <i class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('name')"></i></th>
+        <th>Position <i  class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('position')"></i></th>
+        <th>Office <i class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('office')"></i></th>
+        <th>Age <i class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('age')"></i></th>
+        <th>Start Date <i class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('startdate')"></i></th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+  var employees = [
+    { id: 1, name: "Ali", age: 25, position: "Accountant", office: "Tokyo", startdate: "2008-01-01" },
+    { id: 2, name: "Sara", age: 30, position: "Developer", office: "London", startdate: "2012-05-15" },
+    { id: 3, name: "Omar", age: 28, position: "Designer", office: "New York", startdate: "2015-09-20" }
+  ];
+
+  var tableBody = document.querySelector("#userTable tbody");
+  var sortOrder = {}; 
+
+  function makeTable() {
+    tableBody.innerHTML = ""; 
+    for (var i = 0; i < employees.length; i++) {
+      var user = employees[i];
+      var row = document.createElement("tr");
+      row.innerHTML =
+        "<td>" + user.name + "</td>" +
+        "<td>" + user.position + "</td>" +
+        "<td>" + user.office + "</td>" +
+        "<td>" + user.age + "</td>" +
+        "<td>" + user.startdate + "</td>";
+      tableBody.appendChild(row);
+    }
+  }
+
+  function addEmployee() {
+    var name = document.getElementById("name").value.trim();
+    var age = document.getElementById("age").value.trim();
+    var position = document.getElementById("position").value.trim();
+    var office = document.getElementById("office").value.trim();
+    var startdate = document.getElementById("startdate").value;
+
+    if (!name || !age || !position || !office || !startdate) {
+      alert("Please fill in all fields");
+      return;
+    }
+  
+    var newEmployee = {
+      id: employees.length + 1,
+      name: name,
+      age: parseInt(age, 10),
+      position: position,
+      office: office,
+      startdate: startdate
+    };
+
+    employees.push(newEmployee);
+    makeTable();
+
+    var inputs = document.querySelectorAll(".frm input");
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].value = "";
+    }
+  }
+
+  function sortDB(field) {
+    sortOrder[field] = !sortOrder[field];
+    var asc = sortOrder[field];
+
+    employees.sort(function(a, b) {
+      var valA = a[field];
+      var valB = b[field];
+
+      if (typeof valA === "number" && typeof valB === "number") {
+        return asc ? valA - valB : valB - valA;
+      } else {
+        return asc ? String(valA).localeCompare(String(valB)) 
+                   : String(valB).localeCompare(String(valA));
+      }
+    });
+
+    makeTable();
+  }
+
+  makeTable();
+  
+    const tggle = document.getElementById("sortbtn");
+    tggle.classList.toggle("activeClass");
+</script>
+</body>
+</html>
+
