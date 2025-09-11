@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yassen</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+      background: #eeeeee;
+      color: #333;
+    }
+    .navbar {
+      background: #fff !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .navbar-brand, .nav-link {
+      color: #0d6efd !important;
+      font-weight: 500;
+    }
+    .nav-link:hover {
+      color: #0a58ca !important;
+    }
+    header {
+      padding: 120px 0;
+      text-align: center;
+      background: linear-gradient(100deg, #a5c9ff, #0a58ca);
+      color: white;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: bold;
+    }
+    .contact-info li {
+    font-size: 1.1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+    }
+
+    .contact-info a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+    color: #007bff;
+    }
+
+    @keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    section {
+      padding: 80px 0;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    section.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    footer {
+      background: #d1d1d1;
+      padding: 20px 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Yassen</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <img src="https://avatars.githubusercontent.com/u/82486618?s=400&u=4805ed62934afc39a2863cac1aaf0020811adfc1&v=4" class="profile-img" alt="Profile">
+      <h1>Yassen Mohamed Abdulhamid</h1>
+      <p class="lead">Full Stack Developer | Designer | Data Analyst</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container text-center">
+      <h2>About Me</h2>
+      <p class="w-75 mx-auto">
+        I’m a developer passionate about crafting clean, responsive, and modern web experiences.
+        With a focus on minimal design and functionality, I love building solutions that matter.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills" class="bg-light">
+    <div class="container">
+      <h2 class="text-center">Skills</h2>
+      <div class="row text-center">
+        <div class="col-md-4 mb-3">
+          <div class="card p-3">HTML5 / CSS3 / Bootstrap</div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card p-3">JavaScript / Python / Django</div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card p-3">Git / GitHub / UI & UX</div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card p-3">Linux system Administraion</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="text-center">Projects</h2>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <div class="card p-3">
+            <h5>Portfolio Website</h5>
+            <p>Responsive portfolio showcasing my work and identity.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card p-3">
+            <h5>Task Manager</h5>
+            <p>A web app for organizing and tracking daily tasks efficiently.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card p-3">
+            <h5>E-commerce Store</h5>
+            <p>Modern online shop with cart and secure payment gateway.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" class="bg-light">
+    <div class="container">
+      <h2 class="text-center">Achievements</h2>
+      <ul class="list-group list-group-flush text-center">
+        <li class="list-group-item">RoboCup Junior 2018 – 3rd Place</li>
+        <li class="list-group-item">ECPC 2022 – ACPC Qual.</li>
+      </ul>
+    </div>
+  </section>
+  <section id="certifications" class="bg-light">
+    <div class="container">
+      <h2 class="text-center">Certifications</h2>
+      <ul class="list-group list-group-flush text-center">
+        <li class="list-group-item">Data analyics - Google</li>
+        <li class="list-group-item">Software Engineer Internship - HackerRank</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="text-center">Contact Me</h2>
+      <form class="row g-3 w-75 mx-auto">
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Your Name">
+        </div>
+        <div class="col-md-6">
+          <input type="email" class="form-control" placeholder="Your Email">
+        </div>
+        <div class="col-12">
+          <textarea rows="4" class="form-control" placeholder="Message"></textarea>
+        </div>
+        <div class="col-12 text-center">
+          <button class="btn btn-primary px-4">Send</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Reach Me</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <ul class="list-unstyled contact-info text-center">
+          <li class="mb-3 fade-in">
+            <i class="bi bi-envelope-fill me-2 text-primary"></i>
+            <a href="mailto:yassenmismail@gmail.com">yassenmismail@gmail.com</a>
+          </li>
+          <li class="mb-3 fade-in" style="animation-delay:0.3s;">
+            <i class="bi bi-telephone-fill me-2 text-primary"></i>
+            <a href="tel:+201280193180">+201280193180</a>
+          </li>
+          <li class="fade-in" style="animation-delay:0.6s;">
+            <i class="bi bi-geo-alt-fill me-2 text-primary"></i>
+            <span>Alexandria, Egypt</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <footer class="text-center">
+    <p>&copy; 2025 Yassen Mohamed Abdulhamid. Portfolio</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>

@@ -7,39 +7,34 @@
   <script src="https://kit.fontawesome.com/85940c58c2.js" crossorigin="anonymous"></script>
   <style>
     body { 
-        font-family: Arial, sans-serif; 
-        margin: 20px;
+      font-family: Arial, 
+      sans-serif; 
+      margin: 20px;
     }
     .frm input { 
-        margin: 5px; 
-        padding: 5px;
+      margin: 5px; 
+      padding: 5px;
     }
     .frm button { 
-        padding: 5px 10px; 
-        cursor: pointer; 
+      padding: 5px 10px; 
+      cursor: pointer; 
     }
-    table { 
-        width: 100%; 
-        border-collapse: collapse; 
-        margin-top: 20px; 
-    }
-    th {
-        font-weight: 500;
-    }
-    tr:nth-child(even){
-        background-color: rgba(169, 169, 169, 0.404);
+    table { width: 100%; 
+      border-collapse: collapse; 
+      margin-top: 20px; 
     }
     th, td { 
-        padding: 8px; 
-        text-align: left; 
+      padding: 8px; 
+      text-align: left; 
+      border-bottom: 1px solid #ccc; 
     }
-    .sortbtn{
-        cursor: pointer;
+    tr:nth-child(even){ 
+      background-color: #f2f2f2; 
     }
-    .sortbtn:hover{
-        opacity: 70%;
+    .sortbtn { 
+      cursor: pointer; 
+      margin-left: 5px; 
     }
-
   </style>
 </head>
 <body>
@@ -49,14 +44,14 @@
     <input type="text" id="position" placeholder="Position" required>
     <input type="text" id="office" placeholder="Office" required>
     <input type="date" id="startdate" required>
-    <button type="button" id="addBtn" onclick="addEmployee()">+ Add</button>
+    <button type="button" onclick="addEmployee()">+ Add</button>
   </div>
 
-  <table border="1" id="userTable">
+  <table id="userTable">
     <thead>
       <tr>
         <th>Name <i class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('name')"></i></th>
-        <th>Position <i  class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('position')"></i></th>
+        <th>Position <i class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('position')"></i></th>
         <th>Office <i class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('office')"></i></th>
         <th>Age <i class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('age')"></i></th>
         <th>Start Date <i class="fa-solid fa-arrow-up sortbtn" onclick="sortDB('startdate')"></i></th>
@@ -65,6 +60,9 @@
     <tbody></tbody>
   </table>
 
+  <div class="ll">
+
+  </div>
 <script>
   var employees = [
     { id: 1, name: "Ali", age: 25, position: "Accountant", office: "Tokyo", startdate: "2008-01-01" },
@@ -73,19 +71,19 @@
   ];
 
   var tableBody = document.querySelector("#userTable tbody");
-  var sortOrder = {}; 
+  var sortOrder = {};
 
   function makeTable() {
-    tableBody.innerHTML = ""; 
+    tableBody.innerHTML = "";
     for (var i = 0; i < employees.length; i++) {
-      var user = employees[i];
+      var e = employees[i];
       var row = document.createElement("tr");
       row.innerHTML =
-        "<td>" + user.name + "</td>" +
-        "<td>" + user.position + "</td>" +
-        "<td>" + user.office + "</td>" +
-        "<td>" + user.age + "</td>" +
-        "<td>" + user.startdate + "</td>";
+        "<td>" + e.name + "</td>" +
+        "<td>" + e.position + "</td>" +
+        "<td>" + e.office + "</td>" +
+        "<td>" + e.age + "</td>" +
+        "<td>" + e.startdate + "</td>";
       tableBody.appendChild(row);
     }
   }
@@ -101,7 +99,7 @@
       alert("Please fill in all fields");
       return;
     }
-  
+
     var newEmployee = {
       id: employees.length + 1,
       name: name,
@@ -120,30 +118,115 @@
     }
   }
 
-  function sortDB(field) {
+function sortDB(field) {
     sortOrder[field] = !sortOrder[field];
     var asc = sortOrder[field];
-
+    var icons = document.querySelectorAll(".sortbtn");
+    for (var i = 0; i < icons.length; i++) {
+      icons[i].classList.remove("fa-arrow-down");
+      icons[i].classList.add("fa-arrow-up");
+    }
+    var thIcon = event.target;
+    if (asc) {
+      thIcon.classList.remove("fa-arrow-down");
+      thIcon.classList.add("fa-arrow-up");
+    } else {
+      thIcon.classList.remove("fa-arrow-up");
+      thIcon.classList.add("fa-arrow-down");
+    }
     employees.sort(function(a, b) {
       var valA = a[field];
       var valB = b[field];
 
       if (typeof valA === "number" && typeof valB === "number") {
         return asc ? valA - valB : valB - valA;
-      } else {
-        return asc ? String(valA).localeCompare(String(valB)) 
-                   : String(valB).localeCompare(String(valA));
       }
+      valA = String(valA);
+      valB = String(valB);
+      return asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
     });
-
     makeTable();
   }
-
   makeTable();
-  
-    const tggle = document.getElementById("sortbtn");
-    tggle.classList.toggle("activeClass");
+  function changeIconClass() {
+    var iconElement = document.getElementById("myIcon");
+    iconElement.classList.add("new-class");
+    iconElement.classList.remove("initial-class");
+    iconElement.classList.toggle("another-class");
+  }
+  function Node(value) {
+    this.value = value;
+    this.next = null;
+  }
+  function LinkedList() {
+    this.head = null;
+    this.length = 0;
+  }
+  LinkedList.prototype.push = function(value) {
+    var newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      var current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = newNode;
+    }
+    this.length++;
+  };
+  LinkedList.prototype.pop = function(value) {
+    if (!this.head) return false;
+    if (this.head.value === value) {
+      this.head = this.head.next;
+      this.length--;
+      return true;
+    }
+    var current = this.head;
+    while (current.next && current.next.value !== value) {
+      current = current.next;
+    }
+    if (current.next) {
+      current.next = current.next.next;
+      this.length--;
+      return true;
+    }
+    return false;
+  };
+  LinkedList.prototype.print = function() {
+    var current = this.head;
+    var result = [];
+    while (current) {
+      result.push(current.value);
+      current = current.next;
+    }
+    console.log(result.join(" -> "));
+  };
+  var list = new LinkedList();
+  list.push(10);
+  list.push(20);
+  list.push(30);
+  list.pop(5);
+  list.print(); 
+  list.pop(10);
+  list.print(); 
+
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  Person.prototype.sayHello = function() {
+    console.log("Hi, I am " + this.name + " and I am " + this.age + " years old.");
+  };
+  function Student(name, age, grade) {
+    Person.call(this, name, age);  
+    this.grade = grade;
+  }
+  Student.prototype = Object.create(Person.prototype);
+  Student.prototype.constructor = Student;
+  Student.prototype.study = function() {
+    console.log(this.name + " is studying in grade " + this.grade);
+  };
 </script>
 </body>
 </html>
-
