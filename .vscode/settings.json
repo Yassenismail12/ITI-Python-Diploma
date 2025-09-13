@@ -4,5 +4,7 @@
         "live-preview-extension": true
     },
     "console-ninja.allowConsoleLogToTriggerPredictions": true,
-    "console-ninja.installBinToPath": true
+    "console-ninja.installBinToPath": true,
+    "console-ninja.outputMode": "In View",
+    "livePreview.defaultPreviewPath": "/bootstrap/Lab 1/Lab1.html"
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS BOM Example</title>
+  </head>
+  <body>
+    <h1>BOM Examples</h1>
+    <h2>Window, Timers, Dialogs</h2>
+
+    <!-- Example link -->
+    <div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </p>
+      <a href="#">Example Link</a>
+    </div>
+
+    <!-- Open/Close new windows -->
+    <button onclick="openWindow()">Open new window</button>
+    <button onclick="closeWindow()">Close new window</button>
+
+    <!-- Form example -->
+    <form action="test.html" method="get">
+      <input type="text" name="message" placeholder="Enter your message" />
+      <input type="text" name="title" placeholder="title" />
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Timers -->
+    <button onclick="sayHello()">Say Hello (after 3s)</button>
+    <button onclick="cancelHello()">Cancel Hello</button>
+
+    <!-- Interval Example -->
+    <button onclick="congratulateUser()">Congratulate User (every 2s)</button>
+    <button onclick="stopCongratulating()">Stop Congratulations</button>
+
+    <script>
+      var newWin; // reference to opened window
+
+      // --------------------
+      // WINDOW OBJECT
+      // --------------------
+      function openWindow() {
+        // Opens a new popup window
+        newWin = window.open("newWindow.html", "", "width=500, height=500");
+      }
+      function closeWindow() {
+        newWin.close(); // closes the popup
+      }
+
+      // --------------------
+      // TIMERS (setTimeout, clearTimeout)
+      // --------------------
+      function showMessage() {
+        console.log("form timeout");
+      }
+
+      var timeoutId;
+      function sayHello() {
+        // Run showMessage after 3 seconds
+        timeoutId = setTimeout(showMessage, 3000);
+      }
+      function cancelHello() {
+        // Cancels the timeout
+        clearTimeout(timeoutId);
+      }
+
+      // --------------------
+      // INTERVALS (setInterval, clearInterval)
+      // --------------------
+      var intervalId;
+      function congratulateUser() {
+        // Repeats every 2s
+        intervalId = setInterval(function () {
+          alert("Congratulations! You won an iPhone 16!");
+        }, 2000);
+      }
+
+      function stopCongratulating() {
+        clearInterval(intervalId); // stop repeating
+      }
+
+      // Debug
+      console.log("Before calling sayHello");
+    </script>
+  </body>
+</html>

@@ -247,7 +247,7 @@ greetOnce("Omar") // will run
 // arrow functions
 
 const add = (a,b) => {
-    return a + b;
+     a + b;
 }
 console.log(add(5,6))
 
