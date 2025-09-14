@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/bootstrap/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <title>Document</title>
+    <style>
+        .redText {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="text">Hello</p>
+        <p id="para1" class="text">World</p>
+        <button id="btn">Change</button>
+        <p id="message">Hello World</p>
+        <button id="btnI">Fade</button>
+        <img src="https://images.pexels.com/photos/33434135/pexels-photo-33434135.jpeg" alt="Image" width="100px"
+            id="img1" />
+        <ul id="myList">
+            <li>Apple</li>
+            <li>Banana</li>
+        </ul>
+        <button id="add">Add Item</button>
+        <p id="msg">Hello!</p>
+        <button id="btnT">Toggle Style</button>
+        <h3>Select a Date:</h3>
+        <input type="text" id="date">
+    </div>
+    <div id="box">
+        <p>First</p>
+        <p>Second</p>
+    </div>
+        <!-- 1. jQuery (must come first) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 2. jQuery UI (depends on jQuery) -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- 3. Bootstrap (optional) -->
+    <script src="/bootstrap/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/js/bootstrap.min.js"></script>
+
+    <!-- 4. Your custom JS (depends on all above) -->
+    <script src="jq.js" type="text/javascript"></script>
+
+    <script>
+    $(function() {
+        $("#date").datepicker();
+    });
+
+    </script>
+</body>
+
+</html>
