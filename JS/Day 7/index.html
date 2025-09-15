@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 7</title>
+  </head>
+  <body>
+    <script>
+      // 1- Write a function that greets a user, using a default parameter for the name.
+      function greet(name = "Yassen") {
+        console.log(name);
+        return name;
+      }
+      // 2- Write a function that calculates the total price with a default tax rate parameter.
+      function total(price, tax = 0.14) {
+        console.log(price + price * tax);
+        return price + price * tax;
+      }
+      // 3- Write a function that creates a user object, using a default role parameter.
+      const newuser = function (name, email, role = "User") {
+        return {
+          name: name,
+          email: email,
+          role: role,
+        };
+      };
+      // 4- Write a function that multiplies any number of arguments using the rest operator.
+      function multy(...nums) {
+        return nums.reduce((ans, num) => ans * num, 1);
+      }
+      // 5- Write a function that multiplies the first argument by the sum of all the rest using the rest operator.
+      function multy(x, ...nums) {
+        return nums.reduce((ans, num) => ans * num, 1) * x;
+      }
+      // 6- Write a function that takes a variable number of strings and returns them as a single array using the rest operator.
+      function makeStrArr(...strings) {
+        return strings;
+      }
+      // 7- Create a new array by combining two arrays using the spread operator.
+      let arr1 = [1, 2, 3];
+      let arr2 = [4, 5, 6];
+      let combinedArray = [...arr1, ...arr2];
+      // 8- Copy an array using the spread operator.
+      let arr3 = [1, 2, 3, 4, 5];
+      let copied = [...arr3];
+      // 9- Merge two objects into one using the spread operator.
+      const obj1 = { name: "Yassen", age: 23 };
+      const obj2 = { role: "admin", success: true };
+      const newObj = { ...obj1, ...obj2 };
+
+      // 10- Update a property in an object using the spread operator to create a new object.
+      const user = { name: "Yassen", age: 25, role: "user" };
+      const newuserew = { ...user, age: 23 };
+
+      // 11- Destructure an array to get the first and second elements into variables.
+      const nums = [10, 20, 30, 40];
+      const [x, y] = nums;
+      // 12- Destructure an array to get the first element and the rest into another array.
+      const nums1 = [10, 20, 30, 40];
+      const [xx, ...arr] = nums1;
+      // 13- Destructure an object to extract two properties into variables.
+      const u = { name: "Yassen", age: 23, role: "admin" };
+
+      const { name, age } = u;
+      // 14- Destructure an object and rename the extracted properties.
+      const u1 = { name: "Yassen", age: 25, role: "admin" };
+
+      const { name: username, age: userAge } = user;
+      // 15- Write a function that takes an object as a parameter and uses destructuring in the parameter list to extract specific properties.
+      function Fifteeen({ name, age }) {
+        console.log(`Name: ${name}, Age: ${age}`);
+      }
+    </script>
+  </body>
+</html>
