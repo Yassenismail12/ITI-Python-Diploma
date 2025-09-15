@@ -68,8 +68,15 @@
 
       const { name: username, age: userAge } = user;
       // 15- Write a function that takes an object as a parameter and uses destructuring in the parameter list to extract specific properties.
-      function Fifteeen({ name, age }) {
-        console.log(`Name: ${name}, Age: ${age}`);
+      function Fifteeen(obj, ...keys) {
+        const extracted = {};
+        keys.forEach(key => {
+          if (obj.hasOwnProperty(key)) {
+            extracted[key] = obj[key];
+          }
+        });
+        console.log(extracted);
+        return extracted;
       }
     </script>
   </body>
