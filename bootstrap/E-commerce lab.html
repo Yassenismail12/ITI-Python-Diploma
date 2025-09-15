@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: #4b0082; 
+            color: white;
+            padding: 50px 0;
+        }
+        
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 200px;
+            width: 100%;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background: #4b0082; 
+            border: none;
+            border-radius: 5px;
+            padding: 8px 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff0000; 
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            text-align: center;
+            line-height: 20px;
+        }
+        
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4b0082;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .category-card {
+            background: #ff69b4;
+            color: white;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .modal-header {
+            background: #4b0082; 
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-shopping-bag"></i> E-commerce
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categories">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="ms-auto">
+                    <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#cartModal">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-user"></i> Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>Welcome to E-commerce</h1>
+                    <p>Shop for great products at low prices!</p>
+                    <a href="#products" class="btn btn-light">Shop Now</a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <i class="fas fa-shopping-cart display-1"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="categories" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Categories</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <i class="fas fa-laptop fa-2x"></i>
+                        <h5>Electronics</h5>
+                        <p>Gadgets and tech</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <i class="fas fa-tshirt fa-2x"></i>
+                        <h5>Fashion</h5>
+                        <p>Clothes and accessories</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <i class="fas fa-home fa-2x"></i>
+                        <h5>Home</h5>
+                        <p>Stuff for your home</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center">Our Products</h2>
+            <div class="row" id="productsContainer">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="text-center">
+                <h3>Join Our Newsletter</h3>
+                <p>Get the latest deals!</p>
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Your email">
+                    <button class="btn btn-light" type="button">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>E-commerce</h5>
+                    <p>Online store with quality products.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50">About</a></li>
+                        <li><a href="#" class="text-white-50">Privacy</a></li>
+                        <li><a href="#" class="text-white-50">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Contact</h5>
+                    <p><i class="fas fa-envelope"></i> info@E-commerce.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <p>&copy; 2024 E-commerce</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5><i class="fas fa-shopping-cart"></i> Your Cart</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="cartItems">
+                    <p class="text-center">Your cart is empty</p>
+                </div>
+                <div class="modal-footer">
+                    <h5>Total: $<span id="cartTotal">0.00</span></h5>
+                    <button class="btn btn-primary" id="checkoutBtn" disabled>Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="productModalTitle">Product</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="productModalBody">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Headphones",
+                price: 99.99,
+                originalPrice: 129.99,
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",
+                description: "Wireless headphones."
+            },
+            {
+                id: 2,
+                name: "Smart Watch",
+                price: 199.99,
+                originalPrice: 249.99,
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",
+                description: "Watch with fitness tracking."
+            },
+            {
+                id: 3,
+                name: "Shoes",
+                price: 79.99,
+                originalPrice: 99.99,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
+                description: "Running shoes."
+            }
+        ];
+
+        let cart = [];
+
+        function loadProducts() {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+            products.forEach(product => {
+                container.innerHTML += `
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="${product.image}" class="product-img" alt="${product.name}">
+                            <div class="card-body">
+                                <h5>${product.name}</h5>
+                                <p>${product.description}</p>
+                                <p><span class="price">$${product.price}</span> <span class="original-price">$${product.originalPrice}</span></p>
+                                <button class="btn btn-primary" onclick="addToCart(${product.id})">Add to Cart</button>
+                                <button class="btn btn-outline-primary" onclick="viewProduct(${product.id})">View</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCart();
+            alert(product.name + " added to cart!");
+        }
+
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            let totalItems = 0;
+            let totalPrice = 0;
+            cart.forEach(item => {
+                totalItems += item.quantity;
+                totalPrice += item.price * item.quantity;
+            });
+
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = totalPrice.toFixed(2);
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-center">Your cart is empty</p>';
+                checkoutBtn.disabled = true;
+            } else {
+                let html = '';
+                cart.forEach(item => {
+                    html += `
+                        <div class="d-flex mb-3">
+                            <img src="${item.image}" style="width: 50px; height: 50px;" class="me-2">
+                            <div>
+                                <h6>${item.name}</h6>
+                                <p>$${item.price} x ${item.quantity}</p>
+                                <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                cartItems.innerHTML = html;
+                checkoutBtn.disabled = false;
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function viewProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            const modalTitle = document.getElementById('productModalTitle');
+            const modalBody = document.getElementById('productModalBody');
+
+            modalTitle.textContent = product.name;
+            modalBody.innerHTML = `
+                <img src="${product.image}" class="img-fluid">
+                <h4>${product.name}</h4>
+                <p>${product.description}</p>
+                <p>$${product.price}</p>
+                <button class="btn btn-primary" onclick="addToCart(${product.id}); bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();">Add to Cart</button>
+            `;
+
+            new bootstrap.Modal(document.getElementById('productModal')).show();
+        }
+
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            if (cart.length > 0) {
+                alert('Thank you for your order!');
+                cart = [];
+                updateCart();
+                bootstrap.Modal.getInstance(document.getElementById('cartModal')).hide();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            updateCart();
+        });
+    </script>
+</body>
+</html>
