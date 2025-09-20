@@ -6,6 +6,6 @@
     "console-ninja.allowConsoleLogToTriggerPredictions": true,
     "console-ninja.installBinToPath": true,
     "console-ninja.outputMode": "In View",
-    "livePreview.defaultPreviewPath": "/bootstrap/Lab 1/Lab1.html",
+    "livePreview.defaultPreviewPath": "/bootstrap/Project/index.html",
     "liveServer.settings.port": 5501
 }
